@@ -81,8 +81,11 @@ nav{background:#fff;border-bottom:1px solid #eee;padding:0 24px;position:sticky;
 @media(max-width:768px){.hero-arrow{width:26px;height:26px;font-size:16px}}
 
 .page-hero{background:#1a1a1a;padding:52px 24px;color:#fff;text-align:center}
-.page-hero h1{font-family:'Unbounded',sans-serif;font-size:30px;font-weight:600;margin-bottom:8px}
-.page-hero p{font-size:15px;opacity:.8}
+.page-hero h1{font-family:'Unbounded',sans-serif;font-size:30px;font-weight:600;margin-bottom:8px;animation:pageHeroIn .6s cubic-bezier(.22,1,.36,1) both}
+.page-hero p{font-size:15px;animation:pageHeroInSub .6s cubic-bezier(.22,1,.36,1) .08s both}
+@keyframes pageHeroIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes pageHeroInSub{from{opacity:0;transform:translateY(10px)}to{opacity:.8;transform:none}}
+@media(prefers-reduced-motion:reduce){.page-hero h1{animation:none}.page-hero p{animation:none;opacity:.8}}
 .price-table{width:100%;border-collapse:collapse;font-size:14px}
 .price-table th{background:#f7f7f7;padding:14px 16px;text-align:left;font-weight:500;border-bottom:1px solid #e8e8e8}
 .price-table td{padding:14px 16px;border-bottom:1px solid #f0f0f0}
@@ -156,7 +159,7 @@ footer{background:#f7f7f7;border-top:1px solid #e6e6e6;padding:52px 24px 28px}
 
 /* House cards grid */
 .houses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
-.house-card{background:#fff;border-radius:16px;overflow:hidden;cursor:pointer;position:relative;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:transform .25s,box-shadow .25s}
+.house-card{background:#fff;border-radius:16px;overflow:hidden;cursor:pointer;position:relative;box-shadow:0 2px 12px rgba(0,0,0,0.06);transition:transform .45s var(--rd,0s),box-shadow .25s,opacity .55s ease var(--rd,0s)}
 .house-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(0,0,0,0.13)}
 .house-card-img{position:relative;overflow:hidden;height:240px}
 .house-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
@@ -170,19 +173,24 @@ footer{background:#f7f7f7;border-top:1px solid #e6e6e6;padding:52px 24px 28px}
 .gal-item{overflow:hidden;border-radius:10px;cursor:pointer;aspect-ratio:4/3;background:#f0f0f0}
 .gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s;display:block}
 .gal-item:hover img{transform:scale(1.05)}
-.back-btn{position:absolute;top:20px;left:24px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);padding:8px 18px;border-radius:8px;cursor:pointer;font-size:14px;backdrop-filter:blur(4px);transition:background .2s;font-family:'Inter',sans-serif}
-.back-btn:hover{background:rgba(255,255,255,.28)}
+.back-btn{position:absolute;top:20px;left:24px;background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);padding:8px 18px;border-radius:8px;cursor:pointer;font-size:14px;backdrop-filter:blur(4px);transition:background .2s,transform .2s;font-family:'Inter',sans-serif}
+.back-btn:hover{background:rgba(255,255,255,.28);transform:translateX(-3px)}
 /* Lightbox */
-.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:2000;align-items:center;justify-content:center;flex-direction:column}
-.lightbox.open{display:flex}
-.lightbox-img-wrap{max-width:92vw;max-height:85vh;display:flex;align-items:center;justify-content:center}
-.lightbox-img-wrap img{max-width:92vw;max-height:85vh;object-fit:contain;border-radius:6px;display:block}
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0);z-index:2000;align-items:center;justify-content:center;flex-direction:column;transition:background .3s ease}
+.lightbox.open{display:flex;background:rgba(0,0,0,.93)}
+.lightbox-img-wrap{max-width:92vw;max-height:85vh;display:flex;align-items:center;justify-content:center;transform:scale(.88);opacity:0;transition:transform .35s cubic-bezier(.34,1.1,.64,1),opacity .25s ease}
+.lightbox.open .lightbox-img-wrap{transform:scale(1);opacity:1}
+.lightbox-img-wrap img{max-width:92vw;max-height:85vh;object-fit:contain;border-radius:6px;display:block;transition:opacity .15s ease}
+.lightbox-img-wrap img.lb-fading{opacity:0}
 .lightbox-close{position:absolute;top:18px;right:26px;color:#fff;font-size:34px;cursor:pointer;line-height:1;opacity:.8;transition:opacity .15s}
 .lightbox-close:hover{opacity:1}
-.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:52px;cursor:pointer;padding:0 16px;opacity:.55;transition:opacity .2s;user-select:none;line-height:1}
+.lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:52px;cursor:pointer;padding:0 16px;opacity:.55;transition:opacity .2s,transform .2s;user-select:none;line-height:1}
 .lightbox-prev:hover,.lightbox-next:hover{opacity:1}
+.lightbox-prev:hover{transform:translateY(-50%) translateX(-4px)}
+.lightbox-next:hover{transform:translateY(-50%) translateX(4px)}
 .lightbox-prev{left:0}.lightbox-next{right:0}
 .lightbox-counter{color:rgba(255,255,255,.55);font-size:14px;margin-top:14px;font-family:'Inter',sans-serif}
+@media(prefers-reduced-motion:reduce){.lightbox,.lightbox-img-wrap,.lightbox-img-wrap img{transition:none}}
 
 /* Уведомления: фирменный поп-ап вместо браузерных alert()/prompt() */
 .notice-overlay{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(20,20,20,0);backdrop-filter:blur(0px);transition:background .3s ease,backdrop-filter .3s ease}
@@ -1677,6 +1685,15 @@ function animateStatNum(el){
 (function(){
   const sel='.card,.stat,.review-card,.tech-card,.timeline-item,.advantage';
   document.querySelectorAll(sel).forEach(el=>el.classList.add('reveal'));
+  function stagger(i){ return Math.min(i%8,7)*0.06+'s'; }
+  document.querySelectorAll('.house-card').forEach((el,i)=>{
+    el.classList.add('reveal');
+    el.style.setProperty('--rd',stagger(i));
+  });
+  document.querySelectorAll('.gal-item').forEach((el,i)=>{
+    el.classList.add('reveal');
+    el.style.transitionDelay=stagger(i);
+  });
   if(!('IntersectionObserver' in window)){
     document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible')); return;
   }
@@ -1687,6 +1704,9 @@ function animateStatNum(el){
         if(en.target.classList.contains('stat')){
           const numEl=en.target.querySelector('.stat-num');
           if(numEl) animateStatNum(numEl);
+        }
+        if(en.target.classList.contains('house-card')){
+          en.target.addEventListener('transitionend',function(){en.target.style.removeProperty('--rd');},{once:true});
         }
         io.unobserve(en.target);
       }
@@ -1706,16 +1726,27 @@ var __lb_imgs=[],__lb_idx=0;
 function openLightbox(idx,domId){
   __lb_imgs=window['__gd_'+domId]||[];
   __lb_idx=idx;
-  showLbImg();
+  showLbImg(false);
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow='hidden';
 }
-function showLbImg(){
-  document.getElementById('lb-img').src=__lb_imgs[__lb_idx];
-  document.getElementById('lb-counter').textContent=(__lb_idx+1)+' / '+__lb_imgs.length;
+function showLbImg(animate){
+  var img=document.getElementById('lb-img');
+  var counter=document.getElementById('lb-counter');
+  if(!animate || !img.src){
+    img.src=__lb_imgs[__lb_idx];
+    counter.textContent=(__lb_idx+1)+' / '+__lb_imgs.length;
+    return;
+  }
+  img.classList.add('lb-fading');
+  setTimeout(function(){
+    img.src=__lb_imgs[__lb_idx];
+    counter.textContent=(__lb_idx+1)+' / '+__lb_imgs.length;
+    requestAnimationFrame(function(){ img.classList.remove('lb-fading'); });
+  },150);
 }
-function lbPrev(){__lb_idx=(__lb_idx-1+__lb_imgs.length)%__lb_imgs.length;showLbImg();}
-function lbNext(){__lb_idx=(__lb_idx+1)%__lb_imgs.length;showLbImg();}
+function lbPrev(){__lb_idx=(__lb_idx-1+__lb_imgs.length)%__lb_imgs.length;showLbImg(true);}
+function lbNext(){__lb_idx=(__lb_idx+1)%__lb_imgs.length;showLbImg(true);}
 document.addEventListener('keydown',function(e){
   var lb=document.getElementById('lightbox');
   if(!lb.classList.contains('open'))return;
