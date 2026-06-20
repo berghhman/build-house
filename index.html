@@ -177,6 +177,50 @@ footer{background:#f7f7f7;border-top:1px solid #e6e6e6;padding:52px 24px 28px}
 .lightbox-prev:hover,.lightbox-next:hover{opacity:1}
 .lightbox-prev{left:0}.lightbox-next{right:0}
 .lightbox-counter{color:rgba(255,255,255,.55);font-size:14px;margin-top:14px;font-family:'Inter',sans-serif}
+
+/* Уведомления: фирменный поп-ап вместо браузерных alert()/prompt() */
+.notice-overlay{position:fixed;inset:0;z-index:3000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(20,20,20,0);backdrop-filter:blur(0px);transition:background .3s ease,backdrop-filter .3s ease}
+.notice-overlay.open{display:flex;background:rgba(20,20,20,.55);backdrop-filter:blur(6px)}
+.notice-card{background:#fff;border-radius:22px;padding:38px 34px 32px;max-width:380px;width:100%;text-align:center;position:relative;box-shadow:0 30px 80px rgba(0,0,0,.28);transform:scale(.82) translateY(14px);opacity:0;transition:transform .45s cubic-bezier(.34,1.56,.64,1),opacity .3s ease}
+.notice-overlay.open .notice-card{transform:scale(1) translateY(0);opacity:1}
+.notice-close{position:absolute;top:14px;right:18px;font-size:19px;color:#c2c2c2;cursor:pointer;line-height:1;transition:color .15s}
+.notice-close:hover{color:#666}
+.notice-icon{width:72px;height:72px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;position:relative}
+.notice-icon.success{background:#e8f9ee;color:#22c55e}
+.notice-icon.error{background:#fdecec;color:#e0463f}
+.notice-icon.ask{background:#eaf6fc;color:#229ED9}
+.notice-icon svg{width:36px;height:36px;position:relative;z-index:2}
+.notice-icon::after{content:'';position:absolute;inset:0;border-radius:50%;border:2px solid currentColor;opacity:0}
+.notice-overlay.open .notice-icon::after{animation:noticeRing .9s ease-out .1s}
+@keyframes noticeRing{0%{opacity:.55;transform:scale(.75)}100%{opacity:0;transform:scale(1.4)}}
+.notice-check{stroke-dasharray:32;stroke-dashoffset:32;animation:noticeDraw .45s ease .3s forwards}
+.notice-circle{stroke-dasharray:130;stroke-dashoffset:130;animation:noticeDraw .55s ease forwards}
+@keyframes noticeDraw{to{stroke-dashoffset:0}}
+.notice-title{font-family:'Unbounded',sans-serif;font-size:19px;font-weight:600;margin-bottom:8px}
+.notice-text{font-size:14px;color:#666;line-height:1.65;margin-bottom:6px}
+.notice-prompt-wrap{display:none;margin-top:18px;text-align:left}
+.notice-overlay.mode-prompt .notice-prompt-wrap{display:block}
+.notice-overlay.mode-prompt .notice-ok-btn{display:none}
+.notice-input{width:100%;padding:12px 15px;border:1.5px solid #e3e3e3;border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;margin-bottom:12px;transition:border-color .15s;background:#fff;color:#1a1a1a}
+.notice-input:focus{outline:none;border-color:#2b2b2b}
+.notice-ok-btn{width:100%;margin-top:22px}
+@media(prefers-reduced-motion:reduce){.notice-card{transition:none}.notice-icon::after,.notice-check,.notice-circle{animation:none!important}}
+
+/* Прелоадер: фирменный экран загрузки вместо белой вспышки */
+.preloader{position:fixed;inset:0;background:#fff;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s ease,visibility .5s ease}
+.preloader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.preloader-logo{font-family:'Unbounded',sans-serif;font-size:21px;font-weight:600;letter-spacing:.13em;color:#1a1a1a}
+.preloader-logo span{color:#aaa}
+.preloader-bar{width:140px;height:3px;background:#eee;border-radius:3px;overflow:hidden}
+.preloader-bar span{display:block;height:100%;width:36%;background:#2b2b2b;border-radius:3px;animation:preloaderSlide 1.1s ease-in-out infinite}
+@keyframes preloaderSlide{0%{transform:translateX(-100%)}100%{transform:translateX(380%)}}
+@media(prefers-reduced-motion:reduce){.preloader-bar span{animation:none;width:100%}}
+
+/* Плавный переход между страницами SPA */
+@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.page.active{animation:pageIn .5s cubic-bezier(.22,1,.36,1)}
+@media(prefers-reduced-motion:reduce){.page.active{animation:none}}
+
 @media(max-width:600px){
   .houses-grid{grid-template-columns:1fr 1fr;gap:10px}
   .house-card-img{height:160px}
@@ -208,6 +252,11 @@ img[src^="Дома"].img-error{display:flex!important}
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+
+<div id="preloader" class="preloader">
+  <div class="preloader-logo">BUILD<span>HOUSE</span></div>
+  <div class="preloader-bar"><span></span></div>
+</div>
 
 <nav>
   <div class="nav-inner">
@@ -1265,6 +1314,18 @@ img[src^="Дома"].img-error{display:flex!important}
 </footer>
 
 <script>
+/* Прелоадер: скрываем, когда страница готова (с защитным тайм-аутом) */
+(function(){
+  function hidePreloader(){
+    var pl=document.getElementById('preloader');
+    if(!pl) return;
+    pl.classList.add('hide');
+    setTimeout(function(){ pl.remove(); },650);
+  }
+  window.addEventListener('load',function(){ setTimeout(hidePreloader,220); });
+  setTimeout(hidePreloader,3500);
+})();
+
 /* ===== Настройки приёма заявок ===== */
 // Куда приходят заявки. Поменяйте на нужный адрес.
 const LEAD_EMAIL = "info@buildhousespb.ru";
@@ -1338,13 +1399,60 @@ function deliverLead(lead){
   return Promise.resolve({success:true, mailto:true});
 }
 
+/* Фирменный поп-ап вместо браузерных alert()/prompt() */
+var NOTICE_ICONS = {
+  success: '<svg viewBox="0 0 48 48" fill="none"><circle class="notice-circle" cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2.5"/><path class="notice-check" d="M15 24.5l6 6 12-13" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  error: '<svg viewBox="0 0 48 48" fill="none"><circle class="notice-circle" cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2.5"/><path class="notice-check" d="M18 18l12 12M30 18L18 30" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg>',
+  ask: '<svg viewBox="0 0 48 48" fill="none"><circle class="notice-circle" cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2.5"/><path class="notice-check" d="M24 28v-2.2c0-2.3 4.2-3.1 4.2-7.3a4.2 4.2 0 10-8.4 0" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="33.5" r="1.7" fill="currentColor"/></svg>'
+};
+function showNotice(type,title,text){
+  var ov=document.getElementById('noticeModal');
+  ov.className='notice-overlay open';
+  document.getElementById('noticeIcon').className='notice-icon '+type;
+  document.getElementById('noticeIcon').innerHTML=NOTICE_ICONS[type]||NOTICE_ICONS.success;
+  document.getElementById('noticeTitle').textContent=title;
+  document.getElementById('noticeText').textContent=text;
+  document.body.style.overflow='hidden';
+  clearTimeout(window.__noticeTimer);
+  if(type==='success'){ window.__noticeTimer=setTimeout(closeNotice,5500); }
+}
+function closeNotice(){
+  document.getElementById('noticeModal').classList.remove('open');
+  document.body.style.overflow='';
+  clearTimeout(window.__noticeTimer);
+}
+function openPhonePrompt(){
+  var ov=document.getElementById('noticeModal');
+  clearTimeout(window.__noticeTimer);
+  ov.className='notice-overlay open mode-prompt';
+  document.getElementById('noticeIcon').className='notice-icon ask';
+  document.getElementById('noticeIcon').innerHTML=NOTICE_ICONS.ask;
+  document.getElementById('noticeTitle').textContent='Заказать звонок';
+  document.getElementById('noticeText').textContent='Оставьте номер — перезвоним в течение 15 минут.';
+  document.body.style.overflow='hidden';
+  var inp=document.getElementById('noticeInput');
+  inp.value=''; inp.style.borderColor='';
+  setTimeout(function(){inp.focus();},380);
+}
+function submitPhonePrompt(){
+  var inp=document.getElementById('noticeInput');
+  var phone=(inp.value||'').trim();
+  if(!phone){ inp.style.borderColor='#e0463f'; inp.focus(); return; }
+  closeNotice();
+  window._cbLead = { name:'', phone:phone, email:'', message:'Заказ обратного звонка' };
+  deliverLead(window._cbLead).then(res=>{
+    if(res && !res.mailto){ if(typeof ym!=='undefined'){ ym(109911574,'reachGoal','callback'); } }
+    showNotice('success','Спасибо!','Мы перезвоним вам в ближайшее время.');
+  }).catch(()=>{ showNotice('error','Не удалось отправить','Позвоните нам: +7 (993) 970-94-09'); });
+}
+
 function sendLead(type){
   const lead = collectLead(type);
-  if(!lead.phone){ alert('Пожалуйста, укажите номер телефона, чтобы мы могли связаться с вами.'); return; }
+  if(!lead.phone){ showNotice('error','Укажите телефон','Чтобы мы могли связаться с вами, оставьте номер телефона.'); return; }
   deliverLead(lead).then(res=>{
     if(res && res.mailto){ return; }
     if(typeof ym!=='undefined'){ ym(109911574,'reachGoal','zayavka'); }
-    alert('Спасибо! Заявка отправлена — мы скоро свяжемся с вами.');
+    showNotice('success','Заявка отправлена!','Спасибо — мы свяжемся с вами в ближайшее время.');
     ['hero-name','hero-phone','c-name','c-phone','c-email','c-msg'].forEach(id=>{
       const el=document.getElementById(id); if(el) el.value='';
     });
@@ -1353,16 +1461,11 @@ function sendLead(type){
       const cp=window.__calcRoot.querySelector('.calc-phone'); if(cp) cp.value='';
     }
     document.querySelectorAll('input[id^="lead-dom"]').forEach(el=>{ el.value=''; });
-  }).catch(()=>{ alert('Не удалось отправить заявку. Позвоните нам: +7 (993) 970-94-09'); });
+  }).catch(()=>{ showNotice('error','Не удалось отправить','Позвоните нам: +7 (993) 970-94-09'); });
 }
 
 function requestCallback(){
-  const phone = prompt('Оставьте номер телефона — мы перезвоним:');
-  if(!phone){ return; }
-  window._cbLead = { name:'', phone:phone.trim(), email:'', message:'Заказ обратного звонка' };
-  deliverLead(window._cbLead).then(res=>{
-    if(res && !res.mailto){ if(typeof ym!=='undefined'){ ym(109911574,'reachGoal','callback'); } alert('Спасибо! Мы перезвоним вам в ближайшее время.'); }
-  }).catch(()=>{ alert('Не удалось отправить. Позвоните нам: +7 (993) 970-94-09'); });
+  openPhonePrompt();
 }
 
 /* Калькулятор: одна и та же логика обслуживает сразу два независимых
@@ -1433,7 +1536,7 @@ function calcUpdate(el){
 function sendCalcLead(btn){
   var root = btn.closest('.calc-root');
   if(!root.querySelector('.calc-consent').checked){
-    alert('Пожалуйста, подтвердите согласие на обработку персональных данных.');
+    showNotice('error','Нужно согласие','Пожалуйста, подтвердите согласие на обработку персональных данных.');
     return;
   }
   calcUpdate(root.querySelector('.calc-tier.active') || btn);
@@ -1607,6 +1710,20 @@ document.addEventListener('DOMContentLoaded',function(){
   <div class="lightbox-img-wrap"><img id="lb-img" src="" alt=""></div>
   <span id="lb-counter" class="lightbox-counter"></span>
   <span class="lightbox-next" onclick="lbNext();event.stopPropagation()">&#8250;</span>
+</div>
+
+<div id="noticeModal" class="notice-overlay" onclick="if(event.target===this)closeNotice()">
+  <div class="notice-card">
+    <span class="notice-close" onclick="closeNotice()">&#10005;</span>
+    <div class="notice-icon" id="noticeIcon"></div>
+    <div class="notice-title" id="noticeTitle"></div>
+    <div class="notice-text" id="noticeText"></div>
+    <div class="notice-prompt-wrap">
+      <input type="tel" id="noticeInput" class="notice-input" placeholder="+7 (___) ___-__-__" onkeydown="if(event.key==='Enter')submitPhonePrompt()">
+      <button class="btn" style="width:100%" onclick="submitPhonePrompt()">Перезвоните мне</button>
+    </div>
+    <button class="btn notice-ok-btn" onclick="closeNotice()">Понятно</button>
+  </div>
 </div>
 </body>
 </html>
