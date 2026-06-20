@@ -10,25 +10,31 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;color:#1a1a1a;background:#fff}
 a{color:inherit;text-decoration:none;cursor:pointer}
-.btn{display:inline-block;padding:13px 30px;background:#2b2b2b;color:#fff;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;border:none;transition:background .2s}
-.btn:hover{background:#1a1a1a}
+.btn{display:inline-block;padding:13px 30px;background:#2b2b2b;color:#fff;border-radius:8px;font-size:15px;font-weight:500;cursor:pointer;border:none;transition:background .2s,transform .2s,box-shadow .2s}
+.btn:hover{background:#1a1a1a;transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,0,0,0.18)}
+.btn:active{transform:translateY(0);box-shadow:none}
 .btn-outline{background:transparent;border:2px solid #2b2b2b;color:#2b2b2b}
-.btn-outline:hover{background:#2b2b2b;color:#fff}
+.btn-outline:hover{background:#2b2b2b;color:#fff;box-shadow:0 10px 22px rgba(0,0,0,0.18)}
 .btn-tg{background:#229ED9;color:#fff}
-.btn-tg:hover{background:#1c8dc4}
+.btn-tg:hover{background:#1c8dc4;box-shadow:0 10px 22px rgba(34,158,217,0.35)}
+.btn-loading{position:relative;color:transparent!important;pointer-events:none}
+.btn-loading::after{content:'';position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:btnSpin .6s linear infinite}
+.btn-outline.btn-loading::after{border-color:rgba(43,43,43,.3);border-top-color:#2b2b2b}
+@keyframes btnSpin{to{transform:rotate(360deg)}}
 .section{padding:70px 0}
 .container{max-width:1100px;margin:0 auto;padding:0 24px}
 .section-title{font-family:'Unbounded',sans-serif;font-size:26px;font-weight:500;margin-bottom:8px}
 .section-sub{font-size:15px;color:#666;margin-bottom:36px}
 .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
 .grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-.card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;overflow:hidden;transition:box-shadow .2s}
-.card:hover{box-shadow:0 8px 32px rgba(0,0,0,0.10)}
-.card img{width:100%;height:210px;object-fit:cover;display:block}
+.card{background:#fff;border:1px solid #e8e8e8;border-radius:14px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.card img{width:100%;height:210px;object-fit:cover;display:block;transition:transform .4s}
 .card-ph{width:100%;height:210px;display:flex;align-items:center;justify-content:center;background:#ececec;color:#c2c2c2;font-size:66px;font-weight:600;font-family:'Unbounded',sans-serif;line-height:1}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+.card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.12)}
+.card:hover img{transform:scale(1.06)}
 .card-body{padding:18px}
 .card-price{font-size:18px;font-weight:600;color:#2b2b2b;margin-bottom:5px;font-family:'Unbounded',sans-serif}
 .card-title{font-size:15px;font-weight:500;margin-bottom:10px}
@@ -310,7 +316,7 @@ img[src^="Дома"].img-error{display:flex!important}
       </div>
     </div>
     <div class="hero-slide">
-      <img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113_thumb.JPG" alt="Дом 77" style="object-position:center 78%">
+      <img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113.JPG" alt="Дом 77" style="object-position:center 78%">
       <div class="hero-content">
         <h1>Дом 77 · Заячья Горка</h1>
         <p>ДНП «Заячья Горка», Выборгский р-н · 12 фото проекта</p>
@@ -353,7 +359,7 @@ img[src^="Дома"].img-error{display:flex!important}
       </div>
       <div class="grid-3">
         <div class="card" style="cursor:pointer" onclick="showPage('dom63')"><img src="photos/%D0%94%D0%BE%D0%BC%2063/IMG_2081_thumb.JPG" alt="Дом 63" style="width:100%;height:210px;object-fit:cover;display:block"><div class="card-body"><div class="card-title">Дом 63 &middot; Дубравушка</div><div class="card-meta"><span class="tag">8 фото</span><span>Посмотреть →</span></div></div></div>
-        <div class="card" style="cursor:pointer" onclick="showPage('dom77')"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113_thumb.JPG" alt="Дом 77" style="width:100%;height:210px;object-fit:cover;display:block"><div class="card-body"><div class="card-title">Дом 77 &middot; Заячья Горка</div><div class="card-meta"><span class="tag">12 фото</span><span>Посмотреть →</span></div></div></div>
+        <div class="card" style="cursor:pointer" onclick="showPage('dom77')"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113.JPG" alt="Дом 77" style="width:100%;height:210px;object-fit:cover;display:block"><div class="card-body"><div class="card-title">Дом 77 &middot; Заячья Горка</div><div class="card-meta"><span class="tag">12 фото</span><span>Посмотреть →</span></div></div></div>
         <div class="card" style="cursor:pointer" onclick="showPage('dom73')"><img src="photos/%D0%94%D0%BE%D0%BC%2073/IMG_2056_thumb.JPG" alt="Дом 73" style="width:100%;height:210px;object-fit:cover;display:block"><div class="card-body"><div class="card-title">Дом 73 &middot; Заячья Горка</div><div class="card-meta"><span class="tag">14 фото</span><span>Посмотреть →</span></div></div></div>
       </div>
     </div>
@@ -525,7 +531,7 @@ img[src^="Дома"].img-error{display:flex!important}
           <div class="house-card-body"><div class="house-card-title">Дом 76</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 5 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom77')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113_thumb.JPG" alt="Дом 77" loading="lazy"><span class="photo-count">📷 12</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113.JPG" alt="Дом 77" loading="lazy"><span class="photo-count">📷 12</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 77</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 12 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom78')">
@@ -879,7 +885,7 @@ img[src^="Дома"].img-error{display:flex!important}
   <section class="section">
     <div class="container">
       <div class="gal-grid">
-          <div class="gal-item" onclick="openLightbox(0,'dom77')"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113_thumb.JPG" alt="Дом 77" loading="lazy"></div>
+          <div class="gal-item" onclick="openLightbox(0,'dom77')"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113.JPG" alt="Дом 77" loading="lazy"></div>
           <div class="gal-item" onclick="openLightbox(1,'dom77')"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2115_thumb.JPG" alt="Дом 77" loading="lazy"></div>
           <div class="gal-item" onclick="openLightbox(2,'dom77')"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2123_thumb.JPG" alt="Дом 77" loading="lazy"></div>
           <div class="gal-item" onclick="openLightbox(3,'dom77')"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2125_thumb.JPG" alt="Дом 77" loading="lazy"></div>
@@ -906,7 +912,7 @@ img[src^="Дома"].img-error{display:flex!important}
     </div>
   </section>
 </div>
-<script>window.__gd_dom77=["photos/Дом 77/IMG_2113_thumb.JPG","photos/Дом 77/IMG_2115_thumb.JPG","photos/Дом 77/IMG_2123_thumb.JPG","photos/Дом 77/IMG_2125_thumb.JPG","photos/Дом 77/IMG_2129_thumb.JPG","photos/Дом 77/IMG_2131_thumb.JPG","photos/Дом 77/IMG_2134_thumb.JPG","photos/Дом 77/IMG_2137_thumb.JPG","photos/Дом 77/IMG_2139_thumb.JPG","photos/Дом 77/IMG_2140_thumb.JPG","photos/Дом 77/IMG_2141_thumb.JPG","photos/Дом 77/IMG_2145_thumb.JPG"];</script>
+<script>window.__gd_dom77=["photos/Дом 77/IMG_2113.JPG","photos/Дом 77/IMG_2115.JPG","photos/Дом 77/IMG_2123.JPG","photos/Дом 77/IMG_2125.JPG","photos/Дом 77/IMG_2129.JPG","photos/Дом 77/IMG_2131.JPG","photos/Дом 77/IMG_2134.JPG","photos/Дом 77/IMG_2137.JPG","photos/Дом 77/IMG_2139.JPG","photos/Дом 77/IMG_2140.JPG","photos/Дом 77/IMG_2141.JPG","photos/Дом 77/IMG_2145.JPG"];</script>
 
 <div class="page" id="page-dom78">
   <div class="page-hero" style="position:relative">
@@ -1446,10 +1452,20 @@ function submitPhonePrompt(){
   }).catch(()=>{ showNotice('error','Не удалось отправить','Позвоните нам: +7 (993) 970-94-09'); });
 }
 
+function setBtnLoading(btn, on){
+  if(!btn) return;
+  if(on){ btn.classList.add('btn-loading'); btn.disabled = true; }
+  else { btn.classList.remove('btn-loading'); btn.disabled = false; }
+}
+
 function sendLead(type){
   const lead = collectLead(type);
   if(!lead.phone){ showNotice('error','Укажите телефон','Чтобы мы могли связаться с вами, оставьте номер телефона.'); return; }
+  const ae = document.activeElement;
+  const btn = (ae && /^(BUTTON|A)$/.test(ae.tagName)) ? ae : null;
+  setBtnLoading(btn, true);
   deliverLead(lead).then(res=>{
+    setBtnLoading(btn, false);
     if(res && res.mailto){ return; }
     if(typeof ym!=='undefined'){ ym(109911574,'reachGoal','zayavka'); }
     showNotice('success','Заявка отправлена!','Спасибо — мы свяжемся с вами в ближайшее время.');
@@ -1461,7 +1477,7 @@ function sendLead(type){
       const cp=window.__calcRoot.querySelector('.calc-phone'); if(cp) cp.value='';
     }
     document.querySelectorAll('input[id^="lead-dom"]').forEach(el=>{ el.value=''; });
-  }).catch(()=>{ showNotice('error','Не удалось отправить','Позвоните нам: +7 (993) 970-94-09'); });
+  }).catch(()=>{ setBtnLoading(btn, false); showNotice('error','Не удалось отправить','Позвоните нам: +7 (993) 970-94-09'); });
 }
 
 function requestCallback(){
@@ -1629,6 +1645,34 @@ hero.addEventListener('wheel',e=>{
 },{passive:false});
 }); // end DOMContentLoaded (slider)
 
+/* Анимация увеличения чисел в блоке статистики */
+function animateStatNum(el){
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const text=el.textContent;
+  const m=text.match(/\d[\d\s]*\d|\d/);
+  if(!m) return;
+  const numStr=m[0];
+  const target=parseInt(numStr.replace(/\s/g,''),10);
+  if(!isFinite(target)) return;
+  const prefix=text.slice(0,m.index);
+  const suffix=text.slice(m.index+numStr.length);
+  const grouped=/\s/.test(numStr);
+  const dur=1100; let t0=null;
+  function fmt(n){
+    n=Math.round(n);
+    const s=String(n);
+    return grouped ? s.replace(/\B(?=(\d{3})+(?!\d))/g,' ') : s;
+  }
+  function step(ts){
+    if(t0===null) t0=ts;
+    const p=Math.min((ts-t0)/dur,1);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=prefix+fmt(target*eased)+suffix;
+    if(p<1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
 /* Плавное появление блоков при прокрутке */
 (function(){
   const sel='.card,.stat,.review-card,.tech-card,.timeline-item,.advantage';
@@ -1637,7 +1681,16 @@ hero.addEventListener('wheel',e=>{
     document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible')); return;
   }
   const io=new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('visible'); io.unobserve(en.target); } });
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        en.target.classList.add('visible');
+        if(en.target.classList.contains('stat')){
+          const numEl=en.target.querySelector('.stat-num');
+          if(numEl) animateStatNum(numEl);
+        }
+        io.unobserve(en.target);
+      }
+    });
   },{threshold:0.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 })();
