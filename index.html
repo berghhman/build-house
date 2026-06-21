@@ -157,6 +157,8 @@ footer{background:#f7f7f7;border-top:1px solid #e6e6e6;padding:52px 24px 28px}
   .section-title{font-size:22px}
   .footer-grid,.contact-grid,.two-col{grid-template-columns:1fr!important}
   .footer-bottom{flex-direction:column;gap:8px;text-align:center}
+  .lead-card{padding:30px 22px;border-radius:18px}
+  .gal-section-title{font-size:18px}
 }
 
 /* House cards grid */
@@ -166,19 +168,39 @@ footer{background:#f7f7f7;border-top:1px solid #e6e6e6;padding:52px 24px 28px}
 .house-card-img{position:relative;overflow:hidden;height:240px}
 .house-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
 .house-card:hover .house-card-img img{transform:scale(1.06)}
-.photo-count{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;padding:4px 10px;border-radius:20px;backdrop-filter:blur(4px);white-space:nowrap}
+.photo-count{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;padding:4px 10px 4px 8px;border-radius:20px;backdrop-filter:blur(4px);white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.photo-count svg{width:12px;height:12px;flex:none}
 .house-card-body{padding:16px 20px 20px}
 .house-card-title{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:600;color:#1a1a1a;margin-bottom:5px}
 .house-card-sub{font-size:13px;color:#888}
 /* Gallery page */
-.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
-.gal-item{overflow:hidden;border-radius:10px;cursor:pointer;aspect-ratio:4/3;background:#f0f0f0}
-.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s;display:block}
-.gal-item:hover img{transform:scale(1.05)}
+.gal-section-title{font-family:'Unbounded',sans-serif;font-size:21px;font-weight:600;margin-bottom:18px;color:#1a1a1a}
+.gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.gal-item{position:relative;overflow:hidden;border-radius:14px;cursor:pointer;aspect-ratio:4/3;background:#f0f0f0;box-shadow:0 2px 10px rgba(0,0,0,.05);transition:transform .4s var(--rd,0s),box-shadow .3s,opacity .55s ease var(--rd,0s)}
+.gal-item:hover{transform:translateY(-5px);box-shadow:0 16px 36px rgba(0,0,0,.16)}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,1,.36,1);display:block}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(0,0,0,.32) 100%);opacity:0;transition:opacity .3s}
+.gal-item:hover::after{opacity:1}
+.gal-zoom{position:absolute;top:50%;left:50%;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;color:#1a1a1a;opacity:0;transform:translate(-50%,-50%) scale(.6);transition:opacity .3s,transform .3s;pointer-events:none}
+.gal-zoom svg{width:17px;height:17px}
+.gal-item:hover .gal-zoom{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@media(prefers-reduced-motion:reduce){.gal-item,.gal-item img,.gal-item::after,.gal-zoom{transition:none}.gal-item:hover{transform:none}}
 .back-btn{position:absolute;top:20px;left:24px;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3);padding:9px 20px 9px 17px;border-radius:999px;cursor:pointer;font-size:13.5px;font-weight:500;backdrop-filter:blur(6px);box-shadow:0 2px 10px rgba(0,0,0,.18);transition:background .25s,border-color .25s,transform .25s,box-shadow .25s;font-family:'Inter',sans-serif}
 .back-btn:hover{background:rgba(255,255,255,.24);border-color:rgba(255,255,255,.55);transform:translateX(-4px);box-shadow:0 4px 16px rgba(0,0,0,.24)}
 .back-btn:active{transform:translateX(-2px) scale(.96)}
 @media(prefers-reduced-motion:reduce){.back-btn{transition:background .15s,border-color .15s}.back-btn:hover,.back-btn:active{transform:none}}
+.hero-photo-chip{display:inline-flex;align-items:center;gap:6px;margin-top:14px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85);font-size:12.5px;font-weight:500;padding:5px 13px 5px 11px;border-radius:999px;backdrop-filter:blur(4px)}
+.hero-photo-chip svg{width:13px;height:13px;flex:none}
+/* Карточка лида на страницах домов */
+.lead-section{background:linear-gradient(135deg,#f7f7f7,#efefef)}
+.lead-card{max-width:640px;margin:0 auto;text-align:center;background:#fff;border-radius:22px;padding:44px 36px;box-shadow:0 14px 40px rgba(0,0,0,.07);border:1px solid #ececec}
+.lead-title{margin-bottom:8px}
+.lead-sub{margin-bottom:24px}
+.lead-form-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.lead-input{flex:1;min-width:160px;padding:13px 18px;border:1.5px solid #e3e3e3;border-radius:10px;font-size:14px;font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;transition:border-color .2s,box-shadow .2s}
+.lead-input:focus{outline:none;border-color:#2b2b2b;box-shadow:0 0 0 3px rgba(43,43,43,.08)}
+.lead-btn{white-space:nowrap}
 /* Lightbox */
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0);z-index:2000;align-items:center;justify-content:center;flex-direction:column;transition:background .3s ease}
 .lightbox.open{display:flex;background:rgba(0,0,0,.93)}
@@ -244,7 +266,7 @@ footer{background:#f7f7f7;border-top:1px solid #e6e6e6;padding:52px 24px 28px}
   .house-card-img{height:160px}
   .house-card-body{padding:10px 12px 14px}
   .house-card-title{font-size:13px}
-  .gal-grid{grid-template-columns:1fr 1fr;gap:6px}
+  .gal-grid{grid-template-columns:1fr 1fr;gap:10px}
   .lightbox-prev,.lightbox-next{font-size:36px;padding:0 8px}
 }
 
@@ -503,63 +525,63 @@ img[src^="Дома"].img-error{display:flex!important}
       <div class="photo-notice" id="photoNotice" style="display:none">⚠️ Фотографии отображаются только при открытии сайта вместе с папкой «photos». Разместите HTML-файл и папку в одной директории.</div>
       <div class="houses-grid">
         <div class="house-card" onclick="showPage('dom3')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%203/IMG_2214_thumb.JPG" alt="Дом 3" loading="lazy"><span class="photo-count">📷 3</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%203/IMG_2214_thumb.JPG" alt="Дом 3" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>3</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 3</div><div class="house-card-sub">ДНП Берёзовая Роща, Всеволожский р-н &middot; 3 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom4')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%204/IMG_2210_thumb.JPG" alt="Дом 4" loading="lazy"><span class="photo-count">📷 4</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%204/IMG_2210_thumb.JPG" alt="Дом 4" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>4</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 4</div><div class="house-card-sub">СНТ Радуга, Выборгский р-н &middot; 4 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom5')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%205/IMG_2219_thumb.JPG" alt="Дом 5" loading="lazy"><span class="photo-count">📷 2</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%205/IMG_2219_thumb.JPG" alt="Дом 5" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>2</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 5</div><div class="house-card-sub">ДНП Солнечный Берег, Приозерский р-н &middot; 2 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom19')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2019/IMG_2187_thumb.JPG" alt="Дом 19" loading="lazy"><span class="photo-count">📷 2</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2019/IMG_2187_thumb.JPG" alt="Дом 19" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>2</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 19</div><div class="house-card-sub">СНТ Лесная Поляна, Гатчинский р-н &middot; 2 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom34')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2034/IMG_2119_thumb.JPG" alt="Дом 34" loading="lazy"><span class="photo-count">📷 4</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2034/IMG_2119_thumb.JPG" alt="Дом 34" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>4</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 34</div><div class="house-card-sub">ДНП Северный Ветер, Кировский р-н &middot; 4 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom63')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2063/IMG_2075_thumb.JPG" alt="Дом 63" loading="lazy"><span class="photo-count">📷 8</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2063/IMG_2075_thumb.JPG" alt="Дом 63" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>8</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 63</div><div class="house-card-sub">СНТ Дубравушка, Ломоносовский р-н &middot; 8 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom66')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2066/IMG_2099_thumb.JPG" alt="Дом 66" loading="lazy"><span class="photo-count">📷 10</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2066/IMG_2099_thumb.JPG" alt="Дом 66" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>10</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 66</div><div class="house-card-sub">ДНП Финский Залив, Выборгский р-н &middot; 10 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom71')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2071/IMG_2067_thumb.JPG" alt="Дом 71" loading="lazy"><span class="photo-count">📷 8</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2071/IMG_2067_thumb.JPG" alt="Дом 71" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>8</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 71</div><div class="house-card-sub">СНТ Ягодное, Тосненский р-н &middot; 8 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom73')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2073/IMG_2047_thumb.JPG" alt="Дом 73" loading="lazy"><span class="photo-count">📷 14</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2073/IMG_2047_thumb.JPG" alt="Дом 73" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>14</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 73</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 14 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom76')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2076/IMG_2170_thumb.JPG" alt="Дом 76" loading="lazy"><span class="photo-count">📷 5</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2076/IMG_2170_thumb.JPG" alt="Дом 76" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>5</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 76</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 5 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom77')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113.JPG" alt="Дом 77" loading="lazy"><span class="photo-count">📷 12</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113.JPG" alt="Дом 77" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>12</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 77</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 12 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom78')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2078/IMG_2198_thumb.JPG" alt="Дом 78" loading="lazy"><span class="photo-count">📷 3</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2078/IMG_2198_thumb.JPG" alt="Дом 78" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>3</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 78</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 3 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom79')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2079/IMG_2142_thumb.JPG" alt="Дом 79" loading="lazy"><span class="photo-count">📷 4</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2079/IMG_2142_thumb.JPG" alt="Дом 79" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>4</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 79</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 4 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom80')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2080/IMG_2178_thumb.JPG" alt="Дом 80" loading="lazy"><span class="photo-count">📷 4</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2080/IMG_2178_thumb.JPG" alt="Дом 80" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>4</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 80</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 4 фото</div></div>
         </div>
         <div class="house-card" onclick="showPage('dom81')">
-          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2081/IMG_2060_thumb.JPG" alt="Дом 81" loading="lazy"><span class="photo-count">📷 8</span></div>
+          <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%2081/IMG_2060_thumb.JPG" alt="Дом 81" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>8</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 81</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 8 фото</div></div>
         </div>
       </div>
@@ -1696,7 +1718,7 @@ function animateStatNum(el){
   });
   document.querySelectorAll('.gal-item').forEach((el,i)=>{
     el.classList.add('reveal');
-    el.style.transitionDelay=stagger(i);
+    el.style.setProperty('--rd',stagger(i));
   });
   if(!('IntersectionObserver' in window)){
     document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible')); return;
@@ -1709,7 +1731,7 @@ function animateStatNum(el){
           const numEl=en.target.querySelector('.stat-num');
           if(numEl) animateStatNum(numEl);
         }
-        if(en.target.classList.contains('house-card')){
+        if(en.target.classList.contains('house-card')||en.target.classList.contains('gal-item')){
           en.target.addEventListener('transitionend',function(){en.target.style.removeProperty('--rd');},{once:true});
         }
         io.unobserve(en.target);
@@ -1717,6 +1739,56 @@ function animateStatNum(el){
     });
   },{threshold:0.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* Доп. элементы дизайна страниц домов: заголовок над галереей, счётчик фото в hero, иконка-лупа на фото, карточка лида */
+(function(){
+  document.querySelectorAll('.gal-grid').forEach(function(grid){
+    var items=grid.querySelectorAll('.gal-item');
+    if(!items.length) return;
+    if(!(grid.previousElementSibling&&grid.previousElementSibling.classList.contains('gal-section-title'))){
+      var title=document.createElement('div');
+      title.className='gal-section-title';
+      title.textContent='Фотографии дома';
+      grid.parentNode.insertBefore(title,grid);
+    }
+    items.forEach(function(item){
+      if(item.querySelector('.gal-zoom')) return;
+      var z=document.createElement('span');
+      z.className='gal-zoom';
+      z.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>';
+      item.appendChild(z);
+    });
+    var page=grid.closest('.page');
+    var hero=page&&page.querySelector('.page-hero');
+    var p=hero&&hero.querySelector('p');
+    if(p&&!hero.querySelector('.hero-photo-chip')){
+      var chip=document.createElement('span');
+      chip.className='hero-photo-chip';
+      chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>'+items.length+' фото';
+      p.insertAdjacentElement('afterend',chip);
+    }
+  });
+  document.querySelectorAll('input[id^="lead-"]').forEach(function(inp){
+    var section=inp.closest('section.section');
+    if(section&&!section.classList.contains('lead-section')){
+      section.classList.add('lead-section');
+      var card=section.querySelector('.container');
+      if(card) card.classList.add('lead-card');
+      var h2=section.querySelector('h2.section-title');
+      if(h2) h2.classList.add('lead-title');
+      var sub=section.querySelector('p.section-sub');
+      if(sub) sub.classList.add('lead-sub');
+    }
+    var row=inp.parentElement;
+    if(row) row.classList.add('lead-form-row');
+    inp.classList.add('lead-input');
+    inp.removeAttribute('style');
+  });
+  document.querySelectorAll('button[onclick^="sendLead(\'house-"]').forEach(function(btn){
+    btn.classList.add('lead-btn');
+    btn.removeAttribute('style');
+  });
 })();
 function filterProjects(type,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
