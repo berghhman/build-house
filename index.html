@@ -434,6 +434,13 @@ img[src^="Дома"].img-error{display:flex!important}
       <p class="section-sub" style="text-align:center">Выберите параметры — мы посчитаем ориентировочную стоимость и пришлём точный расчёт по проекту</p>
       <div class="calc-root" style="max-width:720px;margin:0 auto">
         <div style="margin-bottom:26px">
+          <div style="font-weight:600;font-size:15px;margin-bottom:12px">Этажность</div>
+          <div style="display:flex;gap:10px">
+            <div class="calc-opt active" data-floors="1" onclick="calcSetFloors(1,this)">1 этаж</div>
+            <div class="calc-opt" data-floors="2" onclick="calcSetFloors(2,this)">2 этажа</div>
+          </div>
+        </div>
+        <div style="margin-bottom:26px">
           <div style="font-weight:600;font-size:15px;margin-bottom:12px">Комплектация</div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <div class="calc-tier active" data-stage="base" onclick="calcSetStage(this)">
@@ -453,11 +460,11 @@ img[src^="Дома"].img-error{display:flex!important}
         <div style="margin-bottom:26px">
           <div style="font-weight:600;font-size:15px;margin-bottom:12px">Дополнительные опции</div>
           <div class="calc-addons">
-            <label class="calc-addon" data-min="90" data-max="90"><input type="checkbox" onchange="calcUpdate(this)"><span>Свайно-винтовой фундамент</span><span class="calc-addon-price">+ 90 тыс. ₽</span></label>
-            <label class="calc-addon" data-min="95" data-max="150"><input type="checkbox" onchange="calcUpdate(this)"><span>Внешняя отделка фасада</span><span class="calc-addon-price">+ 95–150 тыс. ₽</span></label>
-            <label class="calc-addon" data-min="150" data-max="210"><input type="checkbox" onchange="calcUpdate(this)"><span>Внутренние коммуникации</span><span class="calc-addon-price">+ 150–210 тыс. ₽</span></label>
-            <label class="calc-addon" data-min="200" data-max="300"><input type="checkbox" onchange="calcUpdate(this)"><span>Внутренняя отделка</span><span class="calc-addon-price">+ 200–300 тыс. ₽</span></label>
-            <label class="calc-addon" data-min="55" data-max="55"><input type="checkbox" onchange="calcUpdate(this)"><span>Обустройство террасы</span><span class="calc-addon-price">+ 55 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="90" data-max="90" data-min2="350" data-max2="350"><input type="checkbox" onchange="calcUpdate(this)"><span>Свайно-винтовой фундамент</span><span class="calc-addon-price">+ 90 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="95" data-max="150" data-min2="420" data-max2="420"><input type="checkbox" onchange="calcUpdate(this)"><span>Внешняя отделка фасада</span><span class="calc-addon-price">+ 95–150 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="150" data-max="210" data-min2="490" data-max2="490"><input type="checkbox" onchange="calcUpdate(this)"><span>Внутренние коммуникации</span><span class="calc-addon-price">+ 150–210 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="200" data-max="300" data-min2="840" data-max2="840"><input type="checkbox" onchange="calcUpdate(this)"><span>Внутренняя отделка</span><span class="calc-addon-price">+ 200–300 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="55" data-max="55" data-min2="210" data-max2="210"><input type="checkbox" onchange="calcUpdate(this)"><span>Обустройство террасы</span><span class="calc-addon-price">+ 55 тыс. ₽</span></label>
           </div>
           <p class="calc-addons-note" style="display:none;font-size:13px;color:#999;margin-top:8px">В «Доме под ключ» все опции уже включены в стоимость</p>
         </div>
@@ -1125,16 +1132,16 @@ img[src^="Дома"].img-error{display:flex!important}
         <div>
           <h2 class="section-title" style="margin-bottom:24px">Комплектации</h2>
           <table class="price-table">
-            <thead><tr><th>Этап / комплектация</th><th>Стоимость</th></tr></thead>
+            <thead><tr><th>Этап / комплектация</th><th>1 этаж</th><th>2 этажа</th></tr></thead>
             <tbody>
-              <tr><td>Минимальная цена (каркас + кровля)</td><td class="price-val">1,3–2 млн ₽</td></tr>
-              <tr><td>Тёплый контур (+ окна/двери)</td><td class="price-val">1,7–2,25 млн ₽</td></tr>
-              <tr><td>+ Свайно-винтовой фундамент</td><td class="price-val">+ 90 тыс. ₽</td></tr>
-              <tr><td>+ Внешняя отделка фасада</td><td class="price-val">+ 95–150 тыс. ₽</td></tr>
-              <tr><td>+ Внутренние коммуникации</td><td class="price-val">+ 150–210 тыс. ₽</td></tr>
-              <tr><td>+ Внутренняя отделка</td><td class="price-val">+ 200–300 тыс. ₽</td></tr>
-              <tr><td>+ Обустройство террасы</td><td class="price-val">+ 55 тыс. ₽</td></tr>
-              <tr style="background:#f7f7f7"><td><strong>Дом под ключ</strong></td><td class="price-val">от 2,6 млн ₽</td></tr>
+              <tr><td>Минимальная цена (каркас + кровля)</td><td class="price-val">1,3–2 млн ₽</td><td class="price-val">от 1,82 млн ₽</td></tr>
+              <tr><td>Тёплый контур (+ окна/двери)</td><td class="price-val">1,7–2,25 млн ₽</td><td class="price-val">от 2,38 млн ₽</td></tr>
+              <tr><td>+ Свайно-винтовой фундамент</td><td class="price-val">+ 90 тыс. ₽</td><td class="price-val">+ 350 тыс. ₽</td></tr>
+              <tr><td>+ Внешняя отделка фасада</td><td class="price-val">+ 95–150 тыс. ₽</td><td class="price-val">+ 420 тыс. ₽</td></tr>
+              <tr><td>+ Внутренние коммуникации</td><td class="price-val">+ 150–210 тыс. ₽</td><td class="price-val">+ 490 тыс. ₽</td></tr>
+              <tr><td>+ Внутренняя отделка</td><td class="price-val">+ 200–300 тыс. ₽</td><td class="price-val">+ 840 тыс. ₽</td></tr>
+              <tr><td>+ Обустройство террасы</td><td class="price-val">+ 55 тыс. ₽</td><td class="price-val">+ 210 тыс. ₽</td></tr>
+              <tr style="background:#f7f7f7"><td><strong>Дом под ключ</strong></td><td class="price-val">от 2,6 млн ₽</td><td class="price-val">от 4,55 млн ₽</td></tr>
             </tbody>
           </table>
           <p style="font-size:13px;color:#999;margin-top:12px">* Цены ориентировочные. Точная стоимость рассчитывается по проекту.</p>
@@ -1161,6 +1168,13 @@ img[src^="Дома"].img-error{display:flex!important}
       <p class="section-sub" style="text-align:center">Выберите параметры — мы посчитаем ориентировочную стоимость и пришлём точный расчёт по проекту</p>
       <div class="calc-root" style="max-width:720px;margin:0 auto">
         <div style="margin-bottom:26px">
+          <div style="font-weight:600;font-size:15px;margin-bottom:12px">Этажность</div>
+          <div style="display:flex;gap:10px">
+            <div class="calc-opt active" data-floors="1" onclick="calcSetFloors(1,this)">1 этаж</div>
+            <div class="calc-opt" data-floors="2" onclick="calcSetFloors(2,this)">2 этажа</div>
+          </div>
+        </div>
+        <div style="margin-bottom:26px">
           <div style="font-weight:600;font-size:15px;margin-bottom:12px">Комплектация</div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <div class="calc-tier active" data-stage="base" onclick="calcSetStage(this)">
@@ -1180,11 +1194,11 @@ img[src^="Дома"].img-error{display:flex!important}
         <div style="margin-bottom:26px">
           <div style="font-weight:600;font-size:15px;margin-bottom:12px">Дополнительные опции</div>
           <div class="calc-addons">
-            <label class="calc-addon" data-min="90" data-max="90"><input type="checkbox" onchange="calcUpdate(this)"><span>Свайно-винтовой фундамент</span><span class="calc-addon-price">+ 90 тыс. ₽</span></label>
-            <label class="calc-addon" data-min="95" data-max="150"><input type="checkbox" onchange="calcUpdate(this)"><span>Внешняя отделка фасада</span><span class="calc-addon-price">+ 95–150 тыс. ₽</span></label>
-            <label class="calc-addon" data-min="150" data-max="210"><input type="checkbox" onchange="calcUpdate(this)"><span>Внутренние коммуникации</span><span class="calc-addon-price">+ 150–210 тыс. ₽</span></label>
-            <label class="calc-addon" data-min="200" data-max="300"><input type="checkbox" onchange="calcUpdate(this)"><span>Внутренняя отделка</span><span class="calc-addon-price">+ 200–300 тыс. ₽</span></label>
-            <label class="calc-addon" data-min="55" data-max="55"><input type="checkbox" onchange="calcUpdate(this)"><span>Обустройство террасы</span><span class="calc-addon-price">+ 55 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="90" data-max="90" data-min2="350" data-max2="350"><input type="checkbox" onchange="calcUpdate(this)"><span>Свайно-винтовой фундамент</span><span class="calc-addon-price">+ 90 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="95" data-max="150" data-min2="420" data-max2="420"><input type="checkbox" onchange="calcUpdate(this)"><span>Внешняя отделка фасада</span><span class="calc-addon-price">+ 95–150 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="150" data-max="210" data-min2="490" data-max2="490"><input type="checkbox" onchange="calcUpdate(this)"><span>Внутренние коммуникации</span><span class="calc-addon-price">+ 150–210 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="200" data-max="300" data-min2="840" data-max2="840"><input type="checkbox" onchange="calcUpdate(this)"><span>Внутренняя отделка</span><span class="calc-addon-price">+ 200–300 тыс. ₽</span></label>
+            <label class="calc-addon" data-min="55" data-max="55" data-min2="210" data-max2="210"><input type="checkbox" onchange="calcUpdate(this)"><span>Обустройство террасы</span><span class="calc-addon-price">+ 55 тыс. ₽</span></label>
           </div>
           <p class="calc-addons-note" style="display:none;font-size:13px;color:#999;margin-top:8px">В «Доме под ключ» все опции уже включены в стоимость</p>
         </div>
@@ -1522,10 +1536,13 @@ function requestCallback(){
    виджета (на главной и на странице «Цены»). Состояние и DOM-узлы
    ищутся не по id (он был бы не уникален при двух копиях на странице),
    а через closest('.calc-root') от элемента, на который кликнули. */
+/* Этажность: у каждого этапа — отдельные цены на 1 и 2 этажа (f1/f2).
+   Цены на 2 этажа — это исторические значения калькулятора (до того, как
+   опцию убрали), уменьшенные на 30%. */
 var CALC_TIERS = {
-  base:    {label:'Минимальная цена', min:1.3,  max:2.0},
-  warm:    {label:'Тёплый контур',    min:1.7,  max:2.25},
-  turnkey: {label:'Дом под ключ',     min:2.6,  max:null}
+  base:    {label:'Минимальная цена', f1:{min:1.3,  max:2.0},  f2:{min:1.82, max:null}},
+  warm:    {label:'Тёплый контур',    f1:{min:1.7,  max:2.25}, f2:{min:2.38, max:null}},
+  turnkey: {label:'Дом под ключ',     f1:{min:2.6,  max:null}, f2:{min:4.55, max:null}}
 };
 
 function calcFmtM(n){
@@ -1539,6 +1556,39 @@ function calcRangeLabel(min, max){
   if(max===null || max===undefined) return 'от ' + calcFmtM(min) + ' млн ₽';
   if(Math.abs(max-min) < 0.001) return calcFmtM(min) + ' млн ₽';
   return calcFmtM(min) + '–' + calcFmtM(max) + ' млн ₽';
+}
+
+function calcAddonLabel(min, max){
+  if(Math.abs(max-min) < 0.001) return '+ ' + min + ' тыс. ₽';
+  return '+ ' + min + '–' + max + ' тыс. ₽';
+}
+
+function calcRefreshTierPrices(root){
+  var floors = root.dataset.floors || '1';
+  root.querySelectorAll('.calc-tier').forEach(function(t){
+    var f = CALC_TIERS[t.getAttribute('data-stage')]['f' + floors];
+    t.querySelector('.calc-tier-price').textContent = calcRangeLabel(f.min, f.max);
+  });
+}
+
+function calcRefreshAddonPrices(root){
+  var floors = root.dataset.floors || '1';
+  root.querySelectorAll('.calc-addon').forEach(function(a){
+    var min = parseFloat(a.getAttribute(floors === '2' ? 'data-min2' : 'data-min'));
+    var max = parseFloat(a.getAttribute(floors === '2' ? 'data-max2' : 'data-max'));
+    a.querySelector('.calc-addon-price').textContent = calcAddonLabel(min, max);
+  });
+}
+
+function calcSetFloors(n, el){
+  var root = el.closest('.calc-root');
+  root.dataset.floors = String(n);
+  root.querySelectorAll('.calc-opt').forEach(function(o){
+    o.classList.toggle('active', parseInt(o.getAttribute('data-floors'), 10) === n);
+  });
+  calcRefreshTierPrices(root);
+  calcRefreshAddonPrices(root);
+  calcUpdate(root.querySelector('.calc-tier.active') || el);
 }
 
 function calcSetStage(el){
@@ -1562,7 +1612,9 @@ function calcSetStage(el){
 function calcUpdate(el){
   var root = el.closest('.calc-root');
   var stage = root.dataset.stage || 'base';
-  var tier = CALC_TIERS[stage];
+  var floors = root.dataset.floors || '1';
+  var stageObj = CALC_TIERS[stage];
+  var tier = stageObj['f' + floors];
   var totalMin = tier.min;
   var totalMax = tier.max;
   var addonLabels = [];
@@ -1570,15 +1622,15 @@ function calcUpdate(el){
     root.querySelectorAll('.calc-addon').forEach(function(a){
       var cb = a.querySelector('input');
       if(cb.checked){
-        totalMin += parseFloat(a.getAttribute('data-min')) / 1000;
-        if(totalMax !== null){ totalMax += parseFloat(a.getAttribute('data-max')) / 1000; }
+        totalMin += parseFloat(a.getAttribute(floors === '2' ? 'data-min2' : 'data-min')) / 1000;
+        if(totalMax !== null){ totalMax += parseFloat(a.getAttribute(floors === '2' ? 'data-max2' : 'data-max')) / 1000; }
         addonLabels.push(a.querySelector('span').textContent);
       }
     });
   }
   var label = calcRangeLabel(totalMin, totalMax);
   root.querySelector('.calc-total').textContent = label;
-  root.dataset.summary = 'Заявка с калькулятора: ' + tier.label +
+  root.dataset.summary = 'Заявка с калькулятора: ' + floors + ' этаж' + (floors === '1' ? '' : 'а') + ', ' + stageObj.label +
     (addonLabels.length ? ', опции: ' + addonLabels.join(', ') : '') +
     '. Ориентировочная стоимость: ' + label;
 }
