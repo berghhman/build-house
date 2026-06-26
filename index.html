@@ -116,7 +116,8 @@ nav{background:#fff;border-bottom:1px solid #eee;padding:0 24px;position:sticky;
 .hero-slide.active{opacity:1}
 .hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.45}
 .hero-content{position:relative;z-index:2;padding:0 70px;color:#fff;max-width:640px}
-.hero-content h1{font-family:'Unbounded',sans-serif;font-size:38px;font-weight:600;line-height:1.2;margin-bottom:16px}
+.hero-content h2{font-family:'Unbounded',sans-serif;font-size:38px;font-weight:600;line-height:1.2;margin-bottom:16px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .hero-content p{font-size:17px;opacity:.9;margin-bottom:30px;line-height:1.6}
 .hero-dots{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;z-index:3}
 .hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:background .2s}
@@ -126,11 +127,11 @@ nav{background:#fff;border-bottom:1px solid #eee;padding:0 24px;position:sticky;
 @media(max-width:768px){.hero-arrow{width:26px;height:26px;font-size:16px}}
 
 .page-hero{background:#1a1a1a;padding:52px 24px;color:#fff;text-align:center}
-.page-hero h1{font-family:'Unbounded',sans-serif;font-size:30px;font-weight:600;margin-bottom:8px;animation:pageHeroIn .6s cubic-bezier(.22,1,.36,1) both}
+.page-hero h2{font-family:'Unbounded',sans-serif;font-size:30px;font-weight:600;margin-bottom:8px;animation:pageHeroIn .6s cubic-bezier(.22,1,.36,1) both}
 .page-hero p{font-size:15px;animation:pageHeroInSub .6s cubic-bezier(.22,1,.36,1) .08s both}
 @keyframes pageHeroIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes pageHeroInSub{from{opacity:0;transform:translateY(10px)}to{opacity:.8;transform:none}}
-@media(prefers-reduced-motion:reduce){.page-hero h1{animation:none}.page-hero p{animation:none;opacity:.8}}
+@media(prefers-reduced-motion:reduce){.page-hero h2{animation:none}.page-hero p{animation:none;opacity:.8}}
 .price-table{width:100%;border-collapse:collapse;font-size:14px}
 .price-table th{background:#f7f7f7;padding:14px 16px;text-align:left;font-weight:500;border-bottom:1px solid #e8e8e8}
 .price-table td{padding:14px 16px;border-bottom:1px solid #f0f0f0}
@@ -196,7 +197,7 @@ footer{background:#f7f7f7;border-top:1px solid #e6e6e6;padding:52px 24px 28px}
   .mobile-menu.open{display:flex}
   .hero-slider{height:460px}
   .hero-content{padding:0 24px}
-  .hero-content h1{font-size:24px}
+  .hero-content h2{font-size:24px}
   .hero-content p{font-size:15px}
   .section{padding:48px 0}
   .section-title{font-size:22px}
@@ -385,11 +386,12 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- HOME -->
 <div class="page active" id="page-home">
+  <h1 class="sr-only">BuildHouse — строительство каркасных домов под ключ в Санкт-Петербурге и Ленинградской области</h1>
   <div class="hero-slider" id="hero">
     <div class="hero-slide active">
       <img src="photos/%D0%94%D0%BE%D0%BC%2063/IMG_2081.JPG" alt="Дом 63" style="object-position:center 45%">
       <div class="hero-content">
-        <h1>Дом 63 · Дубравушка</h1>
+        <h2>Дом 63 · Дубравушка</h2>
         <p>СНТ «Дубравушка», Ломоносовский р-н · 8 фото проекта</p>
         <a class="btn" onclick="showPage('dom63')">Смотреть проект →</a>
       </div>
@@ -397,7 +399,7 @@ img[src^="Дома"].img-error{display:flex!important}
     <div class="hero-slide">
       <img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113.JPG" alt="Дом 77" style="object-position:center 78%">
       <div class="hero-content">
-        <h1>Дом 77 · Заячья Горка</h1>
+        <h2>Дом 77 · Заячья Горка</h2>
         <p>ДНП «Заячья Горка», Выборгский р-н · 12 фото проекта</p>
         <a class="btn" onclick="showPage('dom77')">Смотреть проект →</a>
       </div>
@@ -405,7 +407,7 @@ img[src^="Дома"].img-error{display:flex!important}
     <div class="hero-slide">
       <img src="photos/%D0%94%D0%BE%D0%BC%2073/IMG_2056.JPG" alt="Дом 73" style="object-position:center 62%">
       <div class="hero-content">
-        <h1>Дом 73 · Заячья Горка</h1>
+        <h2>Дом 73 · Заячья Горка</h2>
         <p>ДНП «Заячья Горка», Выборгский р-н · 14 фото проекта</p>
         <a class="btn" onclick="showPage('dom73')">Смотреть проект →</a>
       </div>
@@ -545,7 +547,7 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- PROJECTS -->
 <div class="page" id="page-projects">
-  <div class="page-hero"><h1>Проекты домов</h1><p>Готовые и индивидуальные решения под любой бюджет</p></div>
+  <div class="page-hero"><h2>Проекты домов</h2><p>Готовые и индивидуальные решения под любой бюджет</p></div>
   <section class="section">
     <div class="container">
       <div class="filter-bar">
@@ -571,7 +573,7 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- BUILT -->
 <div class="page" id="page-built">
-  <div class="page-hero"><h1>Проекты</h1><p>Построенные дома</p></div>
+  <div class="page-hero"><h2>Проекты</h2><p>Построенные дома</p></div>
   <section class="section">
     <div class="container">
       <div class="photo-notice" id="photoNotice" style="display:none">⚠️ Фотографии отображаются только при открытии сайта вместе с папкой «photos». Разместите HTML-файл и папку в одной директории.</div>
@@ -645,7 +647,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom3">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 3</h1>
+    <h2>Дом 3</h2>
     <p>📍 ДНП «Берёзовая Роща», участок 3, Всеволожский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -674,7 +676,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom4">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 4</h1>
+    <h2>Дом 4</h2>
     <p>📍 СНТ «Радуга», участок 4, Выборгский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -704,7 +706,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom5">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 5</h1>
+    <h2>Дом 5</h2>
     <p>📍 ДНП «Солнечный Берег», участок 5, Приозерский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -732,7 +734,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom19">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 19</h1>
+    <h2>Дом 19</h2>
     <p>📍 СНТ «Лесная Поляна», участок 19, Гатчинский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -760,7 +762,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom34">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 34</h1>
+    <h2>Дом 34</h2>
     <p>📍 ДНП «Северный Ветер», участок 34, Кировский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -790,7 +792,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom63">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 63</h1>
+    <h2>Дом 63</h2>
     <p>📍 СНТ «Дубравушка», участок 63, Ломоносовский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -824,7 +826,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom66">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 66</h1>
+    <h2>Дом 66</h2>
     <p>📍 ДНП «Финский Залив», участок 66, Выборгский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -860,7 +862,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom71">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 71</h1>
+    <h2>Дом 71</h2>
     <p>📍 СНТ «Ягодное», участок 71, Тосненский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -894,7 +896,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom73">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 73</h1>
+    <h2>Дом 73</h2>
     <p>📍 ДНП «Заячья Горка», участок 73, Выборгский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -934,7 +936,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom76">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 76</h1>
+    <h2>Дом 76</h2>
     <p>📍 ДНП «Заячья Горка», участок 76, Выборгский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -965,7 +967,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom77">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 77</h1>
+    <h2>Дом 77</h2>
     <p>📍 ДНП «Заячья Горка», участок 77, Выборгский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -1003,7 +1005,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom78">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 78</h1>
+    <h2>Дом 78</h2>
     <p>📍 ДНП «Заячья Горка», участок 78, Выборгский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -1032,7 +1034,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom79">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 79</h1>
+    <h2>Дом 79</h2>
     <p>📍 ДНП «Заячья Горка», участок 79, Выборгский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -1062,7 +1064,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom80">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 80</h1>
+    <h2>Дом 80</h2>
     <p>📍 ДНП «Заячья Горка», участок 80, Выборгский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -1092,7 +1094,7 @@ img[src^="Дома"].img-error{display:flex!important}
 <div class="page" id="page-dom81">
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
-    <h1>Дом 81</h1>
+    <h2>Дом 81</h2>
     <p>📍 ДНП «Заячья Горка», участок 81, Выборгский р-н, Ленобласть</p>
   </div>
   <section class="section">
@@ -1125,7 +1127,7 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- TECH -->
 <div class="page" id="page-tech">
-  <div class="page-hero"><h1>Технологии строительства</h1><p>Мы используем три проверенные современные технологии</p></div>
+  <div class="page-hero"><h2>Технологии строительства</h2><p>Мы используем три проверенные современные технологии</p></div>
   <section class="section">
     <div class="container">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:60px" class="two-col">
@@ -1170,7 +1172,7 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- PRICE -->
 <div class="page" id="page-price">
-  <div class="page-hero"><h1>Цены на дома</h1><p>Прозрачное ценообразование без скрытых платежей</p></div>
+  <div class="page-hero"><h2>Цены на дома</h2><p>Прозрачное ценообразование без скрытых платежей</p></div>
   <section class="section">
     <div class="container">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px" class="two-col">
@@ -1267,7 +1269,7 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- ABOUT -->
 <div class="page" id="page-about">
-  <div class="page-hero"><h1>О компании BuildHouse</h1><p>Надёжный партнёр в строительстве каркасных домов с 2009 года</p></div>
+  <div class="page-hero"><h2>О компании BuildHouse</h2><p>Надёжный партнёр в строительстве каркасных домов с 2009 года</p></div>
   <section class="section">
     <div class="container">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start" class="two-col">
@@ -1300,7 +1302,7 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- REVIEWS -->
 <div class="page" id="page-reviews">
-  <div class="page-hero"><h1>Отзывы заказчиков</h1><p>Реальные истории людей, которые уже живут в домах BuildHouse</p></div>
+  <div class="page-hero"><h2>Отзывы заказчиков</h2><p>Реальные истории людей, которые уже живут в домах BuildHouse</p></div>
   <section class="section">
     <div class="container">
       <div class="grid-3">
@@ -1320,7 +1322,7 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- CONTACT -->
 <div class="page" id="page-contact">
-  <div class="page-hero"><h1>Контакты</h1><p>Свяжитесь с нами — ответим и рассчитаем проект бесплатно</p></div>
+  <div class="page-hero"><h2>Контакты</h2><p>Свяжитесь с нами — ответим и рассчитаем проект бесплатно</p></div>
   <section class="section">
     <div class="container">
       <div class="contact-grid two-col">
