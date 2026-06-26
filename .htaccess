@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /
+
+# Не трогаем существующие файлы и папки (фото, favicon и т.п.)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
