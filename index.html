@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="/">
 <meta name="google-site-verification" content="tByV_ZXUTUuL7aej1vL_4BBiakPhH2_cLdcrOoGrkxI" />
 <title>BuildHouse — Строительство домов под ключ в Санкт-Петербурге</title>
 <meta name="description" content="Строительство домов под ключ в Санкт-Петербурге и области: готовые и индивидуальные проекты, современные технологии, расчёт стоимости. Звоните +7 (993) 970-94-09.">
@@ -62,6 +63,8 @@ a{color:inherit;text-decoration:none;cursor:pointer}
 .btn-outline:hover{background:#2b2b2b;color:#fff;box-shadow:0 10px 22px rgba(0,0,0,0.18)}
 .btn-tg{background:#229ED9;color:#fff}
 .btn-tg:hover{background:#1c8dc4;box-shadow:0 10px 22px rgba(34,158,217,0.35)}
+.btn-green{background:#2e9e4f;color:#fff;width:100%;text-align:center}
+.btn-green:hover{background:#268043;box-shadow:0 10px 22px rgba(46,158,79,0.3)}
 .btn-loading{position:relative;color:transparent!important;pointer-events:none}
 .btn-loading::after{content:'';position:absolute;left:50%;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;animation:btnSpin .6s linear infinite}
 .btn-outline.btn-loading::after{border-color:rgba(43,43,43,.3);border-top-color:#2b2b2b}
@@ -322,6 +325,43 @@ img[src^="Дома"].img-error{display:flex!important}
 .img-placeholder .ph-icon{font-size:32px;opacity:.5}
 
 .photo-notice{background:#fff3cd;border:1px solid #ffc107;border-radius:8px;padding:12px 18px;font-size:13px;color:#856404;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+
+/* Вкладки "Построенные дома" / "В продаже" на странице Проекты */
+.proj-tabs{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.proj-tab{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;border:1.5px solid #e3e3e3;background:#fff;color:#666;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:border-color .2s,color .2s,background .2s,box-shadow .2s}
+.proj-tab:hover{border-color:#c8c8c8;color:#2b2b2b}
+.proj-tab.active{background:#2b2b2b;border-color:#2b2b2b;color:#fff;box-shadow:0 8px 20px rgba(0,0,0,.16)}
+.proj-tab-fire{font-size:16px;display:inline-block;transform-origin:50% 90%}
+@keyframes fireBurst{0%{transform:scale(1) rotate(0)}25%{transform:scale(1.4) rotate(-10deg)}50%{transform:scale(1.15) rotate(8deg)}75%{transform:scale(1.3) rotate(-5deg)}100%{transform:scale(1) rotate(0)}}
+.proj-tab-fire.fire-burst{animation:fireBurst .6s ease}
+@media(prefers-reduced-motion:reduce){.proj-tab-fire.fire-burst{animation:none}}
+
+/* Карточка дома "в продаже" в общей сетке */
+.house-card-sale{border:1.5px solid #ffdcae}
+.house-card-sale-badge{position:absolute;top:12px;left:12px;background:#ff7a1a;color:#fff;font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:20px;letter-spacing:.02em;box-shadow:0 4px 12px rgba(255,122,26,.35);z-index:2}
+.house-card-sale-price{color:#ff7a1a;font-family:'Unbounded',sans-serif;font-weight:600;font-size:15px;margin-top:2px}
+
+/* Страница дома "в продаже": галерея + блок характеристик */
+.sale-layout{display:grid;grid-template-columns:1fr 260px;gap:32px;align-items:start;margin-bottom:46px}
+.sale-main{position:relative;border-radius:16px;overflow:hidden;height:560px;background:#ececec;max-width:100%}
+.sale-main img{width:100%;height:100%;object-fit:cover;display:block;max-width:100%}
+.sale-arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;font-size:22px;background:rgba(0,0,0,.32)}
+.sale-arrow:hover{background:rgba(0,0,0,.5)}
+.sale-arrow-prev{left:14px}
+.sale-arrow-next{right:14px}
+.sale-thumbs{display:flex;gap:10px;margin-top:12px;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch;scrollbar-width:none;max-width:100%}
+.sale-thumbs::-webkit-scrollbar{display:none}
+.sale-thumb{width:78px;height:58px;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;flex:0 0 auto;transition:border-color .2s,opacity .2s;opacity:.7}
+.sale-thumb:hover{opacity:1}
+.sale-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.sale-thumb.active{border-color:#2b2b2b;opacity:1}
+.sale-specs{background:#f7f7f7;border-radius:16px;padding:26px;position:sticky;top:90px}
+.sale-price{font-family:'Unbounded',sans-serif;font-size:26px;font-weight:600;margin-bottom:18px;color:#2b2b2b}
+.sale-specs .advantage{border-bottom-color:#e8e8e8}
+.sale-spec-label{font-size:12.5px;color:#888;margin-top:2px}
+.sale-desc p{font-size:15px;line-height:1.85;color:#444;margin-bottom:14px}
+.sale-desc h3{font-family:'Unbounded',sans-serif;font-size:21px;font-weight:600;margin:0 0 18px}
+@media(max-width:760px){.sale-layout{grid-template-columns:1fr;gap:24px}.sale-specs{position:static}.sale-main{height:280px}.sale-thumb{width:62px;height:46px}}
 </style>
 
 <!-- Yandex.Metrika counter -->
@@ -389,6 +429,14 @@ img[src^="Дома"].img-error{display:flex!important}
   <h1 class="sr-only">BuildHouse — строительство каркасных домов под ключ в Санкт-Петербурге и Ленинградской области</h1>
   <div class="hero-slider" id="hero">
     <div class="hero-slide active">
+      <img src="photos/%D0%94%D0%BE%D0%BC%20132/1.png" alt="Дом 132 м²" style="object-position:center center">
+      <div class="hero-content">
+        <h2>Дом 132 м² · в продаже</h2>
+        <p>Лужский р-н, рядом р. Оредеж · СИП-панели · 15 млн. ₽</p>
+        <a class="btn" onclick="showPage('sale1')">Смотреть дом →</a>
+      </div>
+    </div>
+    <div class="hero-slide">
       <img src="photos/%D0%94%D0%BE%D0%BC%2063/IMG_2081.JPG" alt="Дом 63" style="object-position:center 45%">
       <div class="hero-content">
         <h2>Дом 63 · Дубравушка</h2>
@@ -417,6 +465,7 @@ img[src^="Дома"].img-error{display:flex!important}
       <div class="hero-dot active" onclick="goSlide(0)"></div>
       <div class="hero-dot" onclick="goSlide(1)"></div>
       <div class="hero-dot" onclick="goSlide(2)"></div>
+      <div class="hero-dot" onclick="goSlide(3)"></div>
       <button class="hero-arrow hero-arrow-next" onclick="next();stopAuto();setTimeout(startAuto,4500)" aria-label="Следующий слайд">&#8250;</button>
     </div>
   </div>
@@ -439,6 +488,16 @@ img[src^="Дома"].img-error{display:flex!important}
         <a class="btn btn-outline" onclick="showPage('built')">Все дома</a>
       </div>
       <div class="grid-3">
+        <div class="card" style="cursor:pointer;position:relative;border:1.5px solid #ffdcae" onclick="showPage('sale1')">
+          <div style="position:relative">
+            <img src="photos/%D0%94%D0%BE%D0%BC%20132/1_thumb.jpg" alt="Дом 132 м²" style="width:100%;height:210px;object-fit:cover;display:block">
+            <span style="position:absolute;top:12px;left:12px;background:#ff7a1a;color:#fff;font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:20px;letter-spacing:.02em;z-index:2;box-shadow:0 4px 12px rgba(255,122,26,.35)">В продаже</span>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Дом 132 м² · Оредеж</div>
+            <div class="card-meta"><span class="tag" style="background:#fff3e8;color:#ff7a1a;font-weight:600">15 млн. ₽</span><span>Посмотреть →</span></div>
+          </div>
+        </div>
         <div class="card" style="cursor:pointer" onclick="showPage('dom63')"><img src="photos/%D0%94%D0%BE%D0%BC%2063/IMG_2081_thumb.JPG" alt="Дом 63" style="width:100%;height:210px;object-fit:cover;display:block"><div class="card-body"><div class="card-title">Дом 63 &middot; Дубравушка</div><div class="card-meta"><span class="tag">8 фото</span><span>Посмотреть →</span></div></div></div>
         <div class="card" style="cursor:pointer" onclick="showPage('dom77')"><img src="photos/%D0%94%D0%BE%D0%BC%2077/IMG_2113.JPG" alt="Дом 77" style="width:100%;height:210px;object-fit:cover;display:block"><div class="card-body"><div class="card-title">Дом 77 &middot; Заячья Горка</div><div class="card-meta"><span class="tag">12 фото</span><span>Посмотреть →</span></div></div></div>
         <div class="card" style="cursor:pointer" onclick="showPage('dom73')"><img src="photos/%D0%94%D0%BE%D0%BC%2073/IMG_2056_thumb.JPG" alt="Дом 73" style="width:100%;height:210px;object-fit:cover;display:block"><div class="card-body"><div class="card-title">Дом 73 &middot; Заячья Горка</div><div class="card-meta"><span class="tag">14 фото</span><span>Посмотреть →</span></div></div></div>
@@ -573,11 +632,15 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- BUILT -->
 <div class="page" id="page-built">
-  <div class="page-hero"><h2>Проекты</h2><p>Построенные дома</p></div>
+  <div class="page-hero"><h2>Проекты</h2><p>Построенные дома и дома в продаже</p></div>
   <section class="section">
     <div class="container">
+      <div class="proj-tabs">
+        <button class="proj-tab active" data-tab="sale" onclick="switchProjTab('sale')"><span class="proj-tab-fire" aria-hidden="true">🔥</span>В продаже</button>
+        <button class="proj-tab" data-tab="built" onclick="switchProjTab('built')">Построенные дома</button>
+      </div>
       <div class="photo-notice" id="photoNotice" style="display:none">⚠️ Фотографии отображаются только при открытии сайта вместе с папкой «photos». Разместите HTML-файл и папку в одной директории.</div>
-      <div class="houses-grid">
+      <div class="houses-grid" id="builtGrid" style="display:none">
         <div class="house-card" onclick="showPage('dom3')">
           <div class="house-card-img"><img src="photos/%D0%94%D0%BE%D0%BC%203/IMG_2214_thumb.JPG" alt="Дом 3" loading="lazy"><span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>3</span></div>
           <div class="house-card-body"><div class="house-card-title">Дом 3</div><div class="house-card-sub">ДНП Берёзовая Роща, Всеволожский р-н &middot; 3 фото</div></div>
@@ -639,10 +702,73 @@ img[src^="Дома"].img-error{display:flex!important}
           <div class="house-card-body"><div class="house-card-title">Дом 81</div><div class="house-card-sub">ДНП Заячья Горка, Выборгский р-н &middot; 8 фото</div></div>
         </div>
       </div>
+      <div class="houses-grid" id="saleGrid">
+        <div class="house-card house-card-sale" onclick="showPage('sale1')">
+          <div class="house-card-img" style="position:relative">
+            <span class="house-card-sale-badge">В продаже</span>
+            <img src="photos/%D0%94%D0%BE%D0%BC%20132/1_thumb.jpg" alt="Дом 132 м²" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+            <span class="photo-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3l2-3h6l2 3h3a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>11</span>
+          </div>
+          <div class="house-card-body">
+            <div class="house-card-title">Дом 132 м²</div>
+            <div class="house-card-sub">Лужский р-н, рядом р. Оредеж &middot; СИП-панели, готов к заселению</div>
+            <div class="house-card-sale-price">15 млн. ₽</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </div>
 
+
+<!-- SALE: Дом 132 м² (в продаже) -->
+<div class="page" id="page-sale1">
+  <div class="page-hero" style="position:relative">
+    <button class="back-btn" onclick="showPage('built')">← Все дома</button>
+    <h2>Дом 132 м² — готов к заселению</h2>
+    <p>📍 Лужский р-н, Ленобласть, рядом река Оредеж (точный адрес уточняется)</p>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="sale-layout">
+        <div>
+          <div class="sale-main" id="sale-main-sale1"></div>
+          <div class="sale-thumbs" id="sale-thumbs-sale1"></div>
+        </div>
+        <aside class="sale-specs">
+          <div class="sale-price">15 млн. ₽</div>
+          <div class="advantage"><div class="advantage-icon">📐</div><div><div style="font-weight:500">Площадь</div><div class="sale-spec-label">132 м²</div></div></div>
+          <div class="advantage"><div class="advantage-icon">🏠</div><div><div style="font-weight:500">Этажность</div><div class="sale-spec-label">Одноэтажный</div></div></div>
+          <div class="advantage"><div class="advantage-icon">🛏</div><div><div style="font-weight:500">Спальни</div><div class="sale-spec-label">3 спальни + кухня-гостиная</div></div></div>
+          <div class="advantage"><div class="advantage-icon">🧱</div><div><div style="font-weight:500">Материал стен</div><div class="sale-spec-label">СИП-панели</div></div></div>
+          <div class="advantage"><div class="advantage-icon">📅</div><div><div style="font-weight:500">Год постройки</div><div class="sale-spec-label">2026, готов к заселению</div></div></div>
+          <div class="advantage" style="border-bottom:none"><div class="advantage-icon">🌳</div><div><div style="font-weight:500">Участок</div><div class="sale-spec-label">8 соток (можно расширить до 30,5 соток)</div></div></div>
+          <div style="background:#fff;border-radius:10px;padding:14px 16px;font-size:13.5px;color:#666;line-height:1.6;margin:18px 0">Соседние участки тоже в собственности компании — при желании площадь участка можно увеличить.</div>
+          <a href="#sale1-lead" class="btn btn-green">ОСТАВИТЬ ЗАЯВКУ</a>
+        </aside>
+      </div>
+      <div class="sale-desc">
+        <h3>О доме</h3>
+        <p>Одноэтажный дом площадью 132 м², построен в 2026 году. Стены выполнены из СИП-панелей — это обеспечивает хорошую теплоизоляцию и долговечность конструкции.</p>
+        <p>Планировка включает три спальни, большую кухню-гостиную, два полноценных санузла с душевыми кабинами, просторную прихожую и котельную. Котельная оснащена как газовым, так и электрическим котлом, отопление дома — через водяные тёплые полы. Газ подведён до границы участка, подана заявка на проведение газа по территории участка.</p>
+        <p>Участок — 8 соток, но соседние наделы тоже находятся в собственности компании: при желании участок можно расширить до 30,5 соток. На территории предусмотрена терраса для отдыха на свежем воздухе, собственная скважина для водоснабжения и септик. Въездная зона рассчитана на два автомобиля под навесом, есть хозпостройка для хранения инвентаря.</p>
+        <p>Через дорогу от участка начинается особо охраняемая природная территория — Шалово-Перечицкий заказник. От дома до пляжа реки Оредеж — 3 минуты пешком.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" style="background:#f7f7f7" id="sale1-lead">
+    <div class="container" style="max-width:640px;text-align:center">
+      <h2 class="section-title" style="margin-bottom:8px">Заинтересовал этот дом?</h2>
+      <p class="section-sub" style="margin-bottom:24px">Оставьте имя и телефон — расскажем подробнее, пришлём дополнительные фото и ответим на вопросы</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center">
+        <input id="lead-sale1-name" type="text" placeholder="Ваше имя" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
+        <input id="lead-sale1-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
+        <button class="btn" style="white-space:nowrap" onclick="sendLead('house-sale1')">Оставить заявку</button>
+      </div>
+    </div>
+  </section>
+</div>
+<script>window.__sale_sale1=["photos/Дом 132/1.png","photos/Дом 132/2.png","photos/Дом 132/3.png","photos/Дом 132/4.jpeg","photos/Дом 132/5.jpeg","photos/Дом 132/6.jpeg","photos/Дом 132/7.jpeg","photos/Дом 132/8.jpeg","photos/Дом 132/9.jpeg","photos/Дом 132/10.jpeg","photos/Дом 132/11.jpeg"];</script>
 
 <div class="page" id="page-dom3">
   <div class="page-hero" style="position:relative">
@@ -1456,12 +1582,13 @@ function collectLead(type){
   }
   if(type && type.indexOf('house-')===0){
     const hid = type.slice(6);
-    const houseLabel = 'Дом ' + hid.replace(/^dom/, '');
+    const houseLabel = hid==='sale1' ? 'Дом 132 м² (в продаже)' : 'Дом ' + hid.replace(/^dom/, '');
+    const msg = hid==='sale1' ? 'Заявка по дому 132 м² (в продаже) — просьба связаться' : ('Интерес к проекту ' + houseLabel + ' — просьба отправить планировку');
     return {
       name: (document.getElementById('lead-'+hid+'-name').value||'').trim(),
       phone: (document.getElementById('lead-'+hid+'-phone').value||'').trim(),
       email: '',
-      message: 'Интерес к проекту ' + houseLabel + ' — просьба отправить планировку'
+      message: msg
     };
   }
   return {
@@ -1490,7 +1617,15 @@ function deliverLead(lead){
         from_name: 'Сайт BuildHouse',
         name: lead.name, phone: lead.phone, email: lead.email, message: lead.message
       })
-    }).then(r=>r.json());
+    }).then(r=>r.json()).then(function(json){
+      /* Web3Forms возвращает success:false при проблеме (неверный/неактивный ключ,
+         лимит, спам-фильтр и т.п.) — без этой проверки такие случаи ошибочно
+         считались успешной отправкой (цель в Метрике летела, письмо — нет). */
+      if(!json || json.success!==true){
+        throw new Error((json && json.message) || 'Web3Forms: отправка не подтверждена');
+      }
+      return json;
+    });
   }
   // Запасной вариант без ключа: открыть почтовый клиент посетителя
   const mail = 'mailto:' + LEAD_EMAIL +
@@ -1677,9 +1812,14 @@ function calcUpdate(el){
   }
   var label = calcRangeLabel(totalMin, totalMax);
   root.querySelector('.calc-total').textContent = label;
+  /* Для письма используем "безопасный" текст без символа ₽ и тире "–":
+     это единственное структурное отличие письма с калькулятора от остальных
+     заявок (которые доходят) — похоже, именно из-за него Web3Forms/почта
+     не доставляли уведомление, хотя заявка и сохранялась в их базе. */
+  var labelPlain = label.replace(/₽/g, 'руб.').replace(/–/g, '-');
   root.dataset.summary = 'Заявка с калькулятора: ' + floors + ' этаж' + (floors === '1' ? '' : 'а') + ', ' + stageObj.label +
     (addonLabels.length ? ', опции: ' + addonLabels.join(', ') : '') +
-    '. Ориентировочная стоимость: ' + label;
+    '. Ориентировочная стоимость: ' + labelPlain;
 }
 
 function sendCalcLead(btn){
@@ -1711,18 +1851,19 @@ const TITLES={
   price:'Цены — BuildHouse',
   about:'О нас — BuildHouse',
   reviews:'Отзывы — BuildHouse',
-  contact:'Контакты — BuildHouse'
+  contact:'Контакты — BuildHouse',
+  sale1:'Дом 132 м² в продаже — BuildHouse'
 };
 function pathForPage(name){
   if(ROUTES[name])return ROUTES[name];
-  if(name.indexOf('dom')===0)return '/projects/'+name;
+  if(name.indexOf('dom')===0||name.indexOf('sale')===0)return '/projects/'+name;
   return '/';
 }
 function pageForPath(path){
   path=path.replace(/\/+$/,'')||'/';
   if(path==='/')return 'home';
   for(var k in ROUTES){if(ROUTES[k]===path)return k;}
-  var m=path.match(/^\/projects\/(dom\d+)$/);
+  var m=path.match(/^\/projects\/(dom\d+|sale\d+)$/);
   if(m && document.getElementById('page-'+m[1]))return m[1];
   return null;
 }
@@ -1733,12 +1874,13 @@ function showPage(name,fromHistory){
   document.getElementById('page-'+name).classList.add('active');
   const navMap={built:0,tech:1,price:2,about:3,reviews:4,contact:5};
   document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
-  var mapKey=name.startsWith('dom')?'built':name;
+  var mapKey=(name.startsWith('dom')||name.startsWith('sale'))?'built':name;
   if(navMap[mapKey]!==undefined) document.querySelectorAll('.nav-links a')[navMap[mapKey]].classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
   var backBtn=document.getElementById('navBack');
   if(backBtn){if(name!=='home'){backBtn.classList.add('visible');}else{backBtn.classList.remove('visible');}}
-  document.title=TITLES[name]||(name.indexOf('dom')===0?'Проекты — BuildHouse':TITLES.home);
+  document.title=TITLES[name]||((name.indexOf('dom')===0||name.indexOf('sale')===0)?'Проекты — BuildHouse':TITLES.home);
+  if(name==='sale1' && typeof saleRender==='function')saleRender('sale1');
   if(!fromHistory){
     var path=pathForPage(name);
     if(location.pathname!==path){history.pushState({page:name},'',path);}
@@ -1749,8 +1891,10 @@ function showPage(name,fromHistory){
 function goBack(){
   var cur=document.querySelector('.page.active');
   var curId=cur?cur.id.replace('page-',''):null;
-  var target=(curId&&curId.indexOf('dom')===0)?'built':'home';
+  var isSale=curId&&curId.indexOf('sale')===0;
+  var target=(curId&&(curId.indexOf('dom')===0||isSale))?'built':'home';
   showPage(target);
+  if(isSale&&typeof switchProjTab==='function')switchProjTab('sale',true);
 }
 /* Кнопки "вперёд/назад" браузера переключают раздел без перезагрузки страницы */
 window.addEventListener('popstate',function(e){
@@ -1930,6 +2074,43 @@ function animateStatNum(el){
     btn.removeAttribute('style');
   });
 })();
+function switchProjTab(tab,silent){
+  document.querySelectorAll('.proj-tab').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-tab')===tab);});
+  var built=document.getElementById('builtGrid'),sale=document.getElementById('saleGrid');
+  if(built)built.style.display=(tab==='built')?'':'none';
+  if(sale)sale.style.display=(tab==='sale')?'':'none';
+  if(tab==='sale'&&!silent){
+    var fire=document.querySelector('.proj-tab[data-tab="sale"] .proj-tab-fire');
+    if(fire){fire.classList.remove('fire-burst');void fire.offsetWidth;fire.classList.add('fire-burst');}
+  }
+}
+/* Карусель фото для страниц домов "в продаже". Источник фото — window.__sale_<id>,
+   пока пустой массив = показываем плейсхолдер "Фото скоро будут". */
+function saleRender(hid){
+  var photos=window['__sale_'+hid]||[];
+  var idx=window['__saleIdx_'+hid]||0;
+  var main=document.getElementById('sale-main-'+hid);
+  var thumbs=document.getElementById('sale-thumbs-'+hid);
+  if(!main)return;
+  if(!photos.length){
+    main.innerHTML='<div class="img-placeholder" style="width:100%;height:100%"><span class="ph-icon">🏡</span>Фото скоро будут</div>';
+    if(thumbs)thumbs.innerHTML='';
+    return;
+  }
+  if(idx<0||idx>=photos.length)idx=0;
+  main.innerHTML='<img src="'+photos[idx]+'" alt="Дом в продаже" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;max-width:100%">'+
+    (photos.length>1?'<button class="hero-arrow sale-arrow sale-arrow-prev" onclick="saleSlide(\''+hid+'\',-1)">‹</button><button class="hero-arrow sale-arrow sale-arrow-next" onclick="saleSlide(\''+hid+'\',1)">›</button>':'');
+  if(thumbs){
+    thumbs.innerHTML=photos.length>1?photos.map(function(src,i){return '<div class="sale-thumb'+(i===idx?' active':'')+'" onclick="saleGoTo(\''+hid+'\','+i+')"><img src="'+src+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>';}).join(''):'';
+  }
+}
+function saleSlide(hid,dir){
+  var photos=window['__sale_'+hid]||[];
+  if(!photos.length)return;
+  window['__saleIdx_'+hid]=((window['__saleIdx_'+hid]||0)+dir+photos.length)%photos.length;
+  saleRender(hid);
+}
+function saleGoTo(hid,i){window['__saleIdx_'+hid]=i;saleRender(hid);}
 function filterProjects(type,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
