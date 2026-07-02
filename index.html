@@ -45,7 +45,7 @@
     "closes": "20:00"
   },
   "sameAs": [
-    "https://t.me/buildhouse_spb"
+    "https://t.me/buildhousespb_bot"
   ]
 }
 </script>
@@ -132,6 +132,7 @@ nav{background:#fff;border-bottom:1px solid #eee;padding:0 24px;position:sticky;
 .page-hero{background:#1a1a1a;padding:52px 24px;color:#fff;text-align:center}
 .page-hero h2{font-family:'Unbounded',sans-serif;font-size:30px;font-weight:600;margin-bottom:8px;animation:pageHeroIn .6s cubic-bezier(.22,1,.36,1) both}
 .page-hero p{font-size:15px;animation:pageHeroInSub .6s cubic-bezier(.22,1,.36,1) .08s both}
+@media(max-width:600px){.page-hero{padding:28px 20px}.page-hero h2{font-size:21px}.page-hero p{font-size:13px}}
 @keyframes pageHeroIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @keyframes pageHeroInSub{from{opacity:0;transform:translateY(10px)}to{opacity:.8;transform:none}}
 @media(prefers-reduced-motion:reduce){.page-hero h2{animation:none}.page-hero p{animation:none;opacity:.8}}
@@ -290,6 +291,12 @@ footer{background:#f7f7f7;border-top:1px solid #e6e6e6;padding:52px 24px 28px}
 .notice-prompt-wrap{display:none;margin-top:18px;text-align:left}
 .notice-overlay.mode-prompt .notice-prompt-wrap{display:block}
 .notice-overlay.mode-prompt .notice-ok-btn{display:none}
+.notice-overlay.mode-sale .sale-lead-wrap{display:block}
+.notice-overlay.mode-sale .notice-prompt-wrap{display:none}
+.notice-overlay.mode-sale .notice-ok-btn{display:none}
+.sale-lead-wrap{display:none}
+.sale-lead-wrap input{width:100%;box-sizing:border-box;margin-bottom:10px;padding:12px 15px;border:1.5px solid #e3e3e3;border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;transition:border-color .15s;background:#fff;color:#1a1a1a}
+.sale-lead-wrap input:focus{outline:none;border-color:#2b2b2b}
 .notice-input{width:100%;padding:12px 15px;border:1.5px solid #e3e3e3;border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;margin-bottom:12px;transition:border-color .15s;background:#fff;color:#1a1a1a}
 .notice-input:focus{outline:none;border-color:#2b2b2b}
 .notice-ok-btn{width:100%;margin-top:22px}
@@ -342,6 +349,7 @@ img[src^="Дома"].img-error{display:flex!important}
 .house-card-sale-price{color:#ff7a1a;font-family:'Unbounded',sans-serif;font-weight:600;font-size:15px;margin-top:2px}
 
 /* Страница дома "в продаже": галерея + блок характеристик */
+.sale-page-body{display:grid;grid-template-columns:1fr 260px;gap:32px;align-items:start;max-width:1100px;margin:40px auto 0;padding:0 24px}
 .sale-layout{display:grid;grid-template-columns:1fr 260px;gap:32px;align-items:start;margin-bottom:46px}
 .sale-main{position:relative;border-radius:16px;overflow:hidden;height:560px;background:#ececec;max-width:100%}
 .sale-main img{width:100%;height:100%;object-fit:cover;display:block;max-width:100%}
@@ -361,7 +369,36 @@ img[src^="Дома"].img-error{display:flex!important}
 .sale-spec-label{font-size:12.5px;color:#888;margin-top:2px}
 .sale-desc p{font-size:15px;line-height:1.85;color:#444;margin-bottom:14px}
 .sale-desc h3{font-family:'Unbounded',sans-serif;font-size:21px;font-weight:600;margin:0 0 18px}
-@media(max-width:760px){.sale-layout{grid-template-columns:1fr;gap:24px}.sale-specs{position:static}.sale-main{height:280px}.sale-thumb{width:62px;height:46px}}
+@media(max-width:760px){
+  .sale-page-body{display:block;margin:0;padding:0}
+  .sale-gallery-col{width:100%}
+  .sale-main{height:72vw;min-height:260px;max-height:420px;border-radius:0}
+  .sale-thumbs{padding:10px 16px;gap:8px}
+  .sale-thumb{width:68px;height:52px}
+  .sale-specs{position:static;border-radius:12px;margin:16px;padding:16px;background:#f7f7f7;box-shadow:none}
+  .sale-specs .advantage{padding:10px 0}
+  .sale-price{font-size:22px;margin-bottom:12px}
+  .sale-desc h3{font-size:17px}
+  .sale-desc p{font-size:14px}
+  #page-sale1 .btn-green{display:none}
+  #page-sale1 .back-btn{display:none}
+  #page-sale1{padding-bottom:80px}
+}
+/* Фиксированная нижняя панель (только на мобильном) */
+.sale-sticky-bar{display:none}
+@media(max-width:760px){
+  .sale-sticky-bar{
+    display:flex;align-items:center;gap:12px;
+    position:fixed;bottom:0;left:0;right:0;z-index:600;
+    background:#fff;
+    padding:12px 16px;
+    padding-bottom:calc(12px + env(safe-area-inset-bottom));
+    box-shadow:0 -1px 0 rgba(0,0,0,.08),0 -6px 24px rgba(0,0,0,.10);
+  }
+  .sale-sticky-price{font-family:'Unbounded',sans-serif;font-weight:700;font-size:17px;white-space:nowrap;color:#1a1a1a}
+  .sale-sticky-btn{flex:1;padding:14px;background:#2e9e4f;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:.01em}
+  .sale-sticky-btn:active{background:#268043}
+}
 </style>
 
 <!-- Yandex.Metrika counter -->
@@ -376,6 +413,7 @@ img[src^="Дома"].img-error{display:flex!important}
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/110100572" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -400,7 +438,7 @@ img[src^="Дома"].img-error{display:flex!important}
     </div>
     <div class="nav-actions">
       <a class="nav-phone" href="tel:+79939709409" onclick="if(typeof ym!=='undefined'){ym(110100572,'reachGoal','phone_click');}">+7 (993) 970-94-09</a>
-      <a class="icon-btn icon-tg" href="https://t.me/buildhouse_spb" target="_blank" rel="noopener" aria-label="Telegram-канал" onclick="if(typeof ym!=='undefined'){ym(110100572,'reachGoal','telegram');}">
+      <a class="icon-btn icon-tg" href="https://t.me/buildhousespb_bot" target="_blank" rel="noopener" aria-label="Telegram-канал" onclick="if(typeof ym!=='undefined'){ym(110100572,'reachGoal','telegram');}">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
       </a>
       <button class="icon-btn icon-call" onclick="requestCallback()" aria-label="Заказать звонок">
@@ -419,7 +457,7 @@ img[src^="Дома"].img-error{display:flex!important}
     <a onclick="showPage('about')">О нас</a>
     <a onclick="showPage('reviews')">Отзывы</a>
     <a onclick="showPage('contact')">Контакты</a>
-    <a class="btn btn-tg mm-btn" href="https://t.me/buildhouse_spb" target="_blank" rel="noopener" onclick="if(typeof ym!=='undefined'){ym(110100572,'reachGoal','telegram');}">Telegram-канал</a>
+    <a class="btn btn-tg mm-btn" href="https://t.me/buildhousespb_bot" target="_blank" rel="noopener" onclick="if(typeof ym!=='undefined'){ym(110100572,'reachGoal','telegram');}">Telegram-канал</a>
     <button class="btn mm-btn" onclick="closeMenu();requestCallback()">Заказать звонок</button>
   </div>
 </nav>
@@ -429,7 +467,7 @@ img[src^="Дома"].img-error{display:flex!important}
   <h1 class="sr-only">BuildHouse — строительство каркасных домов под ключ в Санкт-Петербурге и Ленинградской области</h1>
   <div class="hero-slider" id="hero">
     <div class="hero-slide active">
-      <img src="photos/%D0%94%D0%BE%D0%BC%20132/1.png" alt="Дом 132 м²" style="object-position:center center">
+      <img src="photos/%D0%94%D0%BE%D0%BC%20132/1.png" alt="Дом 132 м²" style="object-position:center 65%">
       <div class="hero-content">
         <h2>Дом 132 м² · в продаже</h2>
         <p>Лужский р-н, рядом р. Оредеж · СИП-панели · 15 млн. ₽</p>
@@ -600,6 +638,9 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="hero-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;background:rgba(255,255,255,.1);color:#fff">
         <button class="btn" style="background:#fff;color:#1a1a1a;white-space:nowrap" onclick="sendLead('hero')">Рассчитать проект</button>
       </div>
+      <div style="display:flex;justify-content:center;margin-top:12px">
+        <div id="ts-hero" class="cf-turnstile" data-sitekey="0x4AAAAADurHMCLuGlUGUAo" data-theme="dark" data-callback="__tsSet_hero" data-expired-callback="__tsExp_hero"></div>
+      </div>
     </div>
   </section>
 </div>
@@ -723,39 +764,42 @@ img[src^="Дома"].img-error{display:flex!important}
 
 <!-- SALE: Дом 132 м² (в продаже) -->
 <div class="page" id="page-sale1">
+  <div class="sale-sticky-bar">
+    <span class="sale-sticky-price">15 млн. ₽</span>
+    <button class="sale-sticky-btn" onclick="openSaleLead('sale1','Дом 132 м² в Перечицах')">Оставить заявку</button>
+  </div>
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
     <h2>Дом 132 м² — готов к заселению</h2>
     <p>📍 Лужский р-н, Ленобласть, рядом река Оредеж (точный адрес уточняется)</p>
   </div>
-  <section class="section">
-    <div class="container">
-      <div class="sale-layout">
-        <div>
-          <div class="sale-main" id="sale-main-sale1"></div>
-          <div class="sale-thumbs" id="sale-thumbs-sale1"></div>
-        </div>
-        <aside class="sale-specs">
-          <div class="sale-price">15 млн. ₽</div>
-          <div class="advantage"><div class="advantage-icon">📐</div><div><div style="font-weight:500">Площадь</div><div class="sale-spec-label">132 м²</div></div></div>
-          <div class="advantage"><div class="advantage-icon">🏠</div><div><div style="font-weight:500">Этажность</div><div class="sale-spec-label">Одноэтажный</div></div></div>
-          <div class="advantage"><div class="advantage-icon">🛏</div><div><div style="font-weight:500">Спальни</div><div class="sale-spec-label">3 спальни + кухня-гостиная</div></div></div>
-          <div class="advantage"><div class="advantage-icon">🧱</div><div><div style="font-weight:500">Материал стен</div><div class="sale-spec-label">СИП-панели</div></div></div>
-          <div class="advantage"><div class="advantage-icon">📅</div><div><div style="font-weight:500">Год постройки</div><div class="sale-spec-label">2026, готов к заселению</div></div></div>
-          <div class="advantage" style="border-bottom:none"><div class="advantage-icon">🌳</div><div><div style="font-weight:500">Участок</div><div class="sale-spec-label">8 соток (можно расширить до 30,5 соток)</div></div></div>
-          <div style="background:#fff;border-radius:10px;padding:14px 16px;font-size:13.5px;color:#666;line-height:1.6;margin:18px 0">Соседние участки тоже в собственности компании — при желании площадь участка можно увеличить.</div>
-          <a href="#sale1-lead" class="btn btn-green">ОСТАВИТЬ ЗАЯВКУ</a>
-        </aside>
-      </div>
-      <div class="sale-desc">
-        <h3>О доме</h3>
-        <p>Одноэтажный дом площадью 132 м², построен в 2026 году. Стены выполнены из СИП-панелей — это обеспечивает хорошую теплоизоляцию и долговечность конструкции.</p>
-        <p>Планировка включает три спальни, большую кухню-гостиную, два полноценных санузла с душевыми кабинами, просторную прихожую и котельную. Котельная оснащена как газовым, так и электрическим котлом, отопление дома — через водяные тёплые полы. Газ подведён до границы участка, подана заявка на проведение газа по территории участка.</p>
-        <p>Участок — 8 соток, но соседние наделы тоже находятся в собственности компании: при желании участок можно расширить до 30,5 соток. На территории предусмотрена терраса для отдыха на свежем воздухе, собственная скважина для водоснабжения и септик. Въездная зона рассчитана на два автомобиля под навесом, есть хозпостройка для хранения инвентаря.</p>
-        <p>Через дорогу от участка начинается особо охраняемая природная территория — Шалово-Перечицкий заказник. От дома до пляжа реки Оредеж — 3 минуты пешком.</p>
-      </div>
+  <!-- Галерея + характеристики: двухколоночная сетка без лишних обёрток -->
+  <div class="sale-page-body">
+    <div class="sale-gallery-col">
+      <div class="sale-main" id="sale-main-sale1"></div>
+      <div class="sale-thumbs" id="sale-thumbs-sale1"></div>
     </div>
-  </section>
+    <aside class="sale-specs">
+      <div class="sale-price">15 млн. ₽</div>
+      <div class="advantage"><div class="advantage-icon">📐</div><div><div style="font-weight:500">Площадь</div><div class="sale-spec-label">132 м²</div></div></div>
+      <div class="advantage"><div class="advantage-icon">🏠</div><div><div style="font-weight:500">Этажность</div><div class="sale-spec-label">Одноэтажный</div></div></div>
+      <div class="advantage"><div class="advantage-icon">🛏</div><div><div style="font-weight:500">Спальни</div><div class="sale-spec-label">3 спальни + кухня-гостиная</div></div></div>
+      <div class="advantage"><div class="advantage-icon">🧱</div><div><div style="font-weight:500">Материал стен</div><div class="sale-spec-label">СИП-панели</div></div></div>
+      <div class="advantage"><div class="advantage-icon">📅</div><div><div style="font-weight:500">Год постройки</div><div class="sale-spec-label">2026, готов к заселению</div></div></div>
+      <div class="advantage" style="border-bottom:none"><div class="advantage-icon">🌳</div><div><div style="font-weight:500">Участок</div><div class="sale-spec-label">8 соток (можно расширить до 30,5 соток)</div></div></div>
+      <div style="background:#fff;border-radius:10px;padding:14px 16px;font-size:13.5px;color:#666;line-height:1.6;margin:18px 0">Соседние участки тоже в собственности компании — при желании площадь участка можно увеличить.</div>
+      <button class="btn btn-green" onclick="openSaleLead('sale1','Дом 132 м² в Перечицах')">ОСТАВИТЬ ЗАЯВКУ</button>
+    </aside>
+  </div>
+  <div class="container">
+    <div class="sale-desc">
+      <h3>О доме</h3>
+      <p>Одноэтажный дом площадью 132 м², построен в 2026 году. Стены выполнены из СИП-панелей — это обеспечивает хорошую теплоизоляцию и долговечность конструкции.</p>
+      <p>Планировка включает три спальни, большую кухню-гостиную, два полноценных санузла с душевыми кабинами, просторную прихожую и котельную. Котельная оснащена как газовым, так и электрическим котлом, отопление дома — через водяные тёплые полы. Газ подведён до границы участка, подана заявка на проведение газа по территории участка.</p>
+      <p>Участок — 8 соток, но соседние наделы тоже находятся в собственности компании: при желании участок можно расширить до 30,5 соток. На территории предусмотрена терраса для отдыха на свежем воздухе, собственная скважина для водоснабжения и септик. Въездная зона рассчитана на два автомобиля под навесом, есть хозпостройка для хранения инвентаря.</p>
+      <p>Через дорогу от участка начинается особо охраняемая природная территория — Шалово-Перечицкий заказник. От дома до пляжа реки Оредеж — 3 минуты пешком.</p>
+    </div>
+  </div>
   <section class="section" style="background:#f7f7f7" id="sale1-lead">
     <div class="container" style="max-width:640px;text-align:center">
       <h2 class="section-title" style="margin-bottom:8px">Заинтересовал этот дом?</h2>
@@ -1457,7 +1501,7 @@ img[src^="Дома"].img-error{display:flex!important}
           <div class="contact-info-item"><div class="contact-info-icon">📞</div><div><div style="font-weight:500;margin-bottom:4px">Телефон</div><div style="font-size:14px;color:#666">+7 (993) 970-94-09<br>Ежедневно 10:00–20:00</div></div></div>
           <div class="contact-info-item"><div class="contact-info-icon">📧</div><div><div style="font-weight:500;margin-bottom:4px">Email</div><div style="font-size:14px;color:#666">info@buildhousespb.ru</div></div></div>
           <div class="contact-info-item"><div class="contact-info-icon">📍</div><div><div style="font-weight:500;margin-bottom:4px">Адрес</div><div style="font-size:14px;color:#666">Санкт-Петербург, Сапёрный переулок, д. 11<br>Визит просим согласовать по телефону</div></div></div>
-          <div class="contact-info-item"><div class="contact-info-icon">💬</div><div><div style="font-weight:500;margin-bottom:4px">Мессенджеры</div><div style="font-size:14px;color:#666"><a href="https://t.me/buildhouse_spb" target="_blank" rel="noopener" style="color:#229ED9;font-weight:500" onclick="if(typeof ym!=='undefined'){ym(110100572,'reachGoal','telegram');}">Telegram-канал</a> · WhatsApp: +7 (993) 970-94-09</div></div></div>
+          <div class="contact-info-item"><div class="contact-info-icon">💬</div><div><div style="font-weight:500;margin-bottom:4px">Мессенджеры</div><div style="font-size:14px;color:#666"><a href="https://t.me/buildhousespb_bot" target="_blank" rel="noopener" style="color:#229ED9;font-weight:500" onclick="if(typeof ym!=='undefined'){ym(110100572,'reachGoal','telegram');}">Telegram-канал</a> · WhatsApp: +7 (993) 970-94-09</div></div></div>
           <div style="background:#f7f7f7;border-radius:12px;padding:20px;margin-top:12px">
             <div style="font-weight:500;margin-bottom:10px">🏭 Производство и офис</div>
             <div style="font-size:14px;color:#666;line-height:1.7">Наш завод расположен в СЗФО. Производство можно посетить лично — предварительно согласуйте визит по телефону.</div>
@@ -1470,6 +1514,7 @@ img[src^="Дома"].img-error{display:flex!important}
             <input id="c-phone" type="tel" placeholder="Телефон">
             <input id="c-email" type="email" placeholder="Email">
             <textarea id="c-msg" placeholder="Расскажите о вашем проекте — технология, площадь, этажность, пожелания..."></textarea>
+            <div id="ts-contact" class="cf-turnstile" data-sitekey="0x4AAAAADurHMCLuGlUGUAo" data-theme="light" data-size="flexible" data-callback="__tsSet_contact" data-expired-callback="__tsExp_contact" style="margin-bottom:6px"></div>
             <button class="btn" style="width:100%" onclick="sendLead('contact')">Отправить заявку</button>
             <p style="font-size:12px;color:#aaa;margin-top:10px">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
           </div>
@@ -1561,6 +1606,21 @@ const LEAD_EMAIL = "info@buildhousespb.ru";
 // Пока поле пустое — заявка открывается в почтовом приложении посетителя.
 const WEB3FORMS_KEY = "a8ff350b-7e5f-4c8f-9173-2d7b94ccaaa7";
 
+/* ─── Cloudflare Turnstile ─── */
+var __tsTokens={};
+function __tsSet_sale(t){__tsTokens.sale=t;}
+function __tsExp_sale(){__tsTokens.sale=null;}
+function __tsSet_phone(t){__tsTokens.phone=t;}
+function __tsExp_phone(){__tsTokens.phone=null;}
+function __tsSet_hero(t){__tsTokens.hero=t;}
+function __tsExp_hero(){__tsTokens.hero=null;}
+function __tsSet_contact(t){__tsTokens.contact=t;}
+function __tsExp_contact(){__tsTokens.contact=null;}
+function __tsReset(id){
+  var el=document.getElementById(id);
+  if(el&&typeof turnstile!=='undefined'){try{turnstile.reset(el);}catch(e){}}
+}
+
 function collectLead(type){
   if(type==='hero'){
     return {
@@ -1615,7 +1675,8 @@ function deliverLead(lead){
         access_key: WEB3FORMS_KEY,
         subject: subject,
         from_name: 'Сайт BuildHouse',
-        name: lead.name, phone: lead.phone, email: lead.email, message: lead.message
+        name: lead.name, phone: lead.phone, email: lead.email, message: lead.message,
+        'cf-turnstile-response': lead.turnstileToken||''
       })
     }).then(r=>r.json()).then(function(json){
       /* Web3Forms возвращает success:false при проблеме (неверный/неактивный ключ,
@@ -1657,6 +1718,34 @@ function closeNotice(){
   document.body.style.overflow='';
   clearTimeout(window.__noticeTimer);
 }
+function openSaleLead(hid, label){
+  var ov=document.getElementById('noticeModal');
+  clearTimeout(window.__noticeTimer);
+  ov.className='notice-overlay open mode-sale';
+  document.getElementById('noticeIcon').className='notice-icon ask';
+  document.getElementById('noticeIcon').innerHTML=NOTICE_ICONS.ask;
+  document.getElementById('noticeTitle').textContent='Оставить заявку';
+  document.getElementById('noticeText').textContent=label||'Укажите ваши данные — мы свяжемся с вами.';
+  document.body.style.overflow='hidden';
+  window.__saleModalHid=hid;
+  var ni=document.getElementById('saleModalName'),pi=document.getElementById('saleModalPhone');
+  if(ni){ni.value='';ni.style.borderColor='';}
+  if(pi){pi.value='';pi.style.borderColor='';}
+  setTimeout(function(){if(ni)ni.focus();},380);
+}
+function submitSaleLead(){
+  var name=(document.getElementById('saleModalName').value||'').trim();
+  var phone=(document.getElementById('saleModalPhone').value||'').trim();
+  if(!phone){var p=document.getElementById('saleModalPhone');p.style.borderColor='#e0463f';p.focus();return;}
+  var hid=window.__saleModalHid||'sale1';
+  var tsToken=__tsTokens.sale||''; __tsTokens.sale=null; __tsReset('ts-sale');
+  closeNotice();
+  var lead={name:name,phone:phone,email:'',message:'Заявка на дом в Перечицах 132 м² (в продаже) — просьба связаться',turnstileToken:tsToken};
+  deliverLead(lead).then(function(res){
+    if(res&&!res.mailto&&typeof ym!=='undefined'){ym(110100572,'reachGoal','zayavka');}
+    showNotice('success','Заявка отправлена!','Спасибо — мы свяжемся с вами в ближайшее время.');
+  }).catch(function(){showNotice('error','Не удалось отправить','Позвоните нам: +7 (993) 970-94-09');});
+}
 function openPhonePrompt(){
   var ov=document.getElementById('noticeModal');
   clearTimeout(window.__noticeTimer);
@@ -1674,8 +1763,9 @@ function submitPhonePrompt(){
   var inp=document.getElementById('noticeInput');
   var phone=(inp.value||'').trim();
   if(!phone){ inp.style.borderColor='#e0463f'; inp.focus(); return; }
+  var tsToken=__tsTokens.phone||''; __tsTokens.phone=null; __tsReset('ts-phone');
   closeNotice();
-  window._cbLead = { name:'', phone:phone, email:'', message:'Заказ обратного звонка' };
+  window._cbLead = { name:'', phone:phone, email:'', message:'Заказ обратного звонка', turnstileToken:tsToken };
   deliverLead(window._cbLead).then(res=>{
     if(res && !res.mailto){ if(typeof ym!=='undefined'){ ym(110100572,'reachGoal','callback'); } }
     showNotice('success','Спасибо!','Мы перезвоним вам в ближайшее время.');
@@ -1691,6 +1781,8 @@ function setBtnLoading(btn, on){
 function sendLead(type){
   const lead = collectLead(type);
   if(!lead.phone){ showNotice('error','Укажите телефон','Чтобы мы могли связаться с вами, оставьте номер телефона.'); return; }
+  var tsKey=(type==='hero'?'hero':type==='contact'?'contact':null);
+  if(tsKey){ lead.turnstileToken=__tsTokens[tsKey]||''; __tsTokens[tsKey]=null; __tsReset('ts-'+tsKey); }
   const ae = document.activeElement;
   const btn = (ae && /^(BUTTON|A)$/.test(ae.tagName)) ? ae : null;
   setBtnLoading(btn, true);
@@ -1706,7 +1798,7 @@ function sendLead(type){
       const cn=window.__calcRoot.querySelector('.calc-name'); if(cn) cn.value='';
       const cp=window.__calcRoot.querySelector('.calc-phone'); if(cp) cp.value='';
     }
-    document.querySelectorAll('input[id^="lead-dom"]').forEach(el=>{ el.value=''; });
+    document.querySelectorAll('input[id^="lead-"]').forEach(el=>{ el.value=''; });
   }).catch(()=>{ setBtnLoading(btn, false); showNotice('error','Не удалось отправить','Позвоните нам: +7 (993) 970-94-09'); });
 }
 
@@ -2103,6 +2195,16 @@ function saleRender(hid){
   if(thumbs){
     thumbs.innerHTML=photos.length>1?photos.map(function(src,i){return '<div class="sale-thumb'+(i===idx?' active':'')+'" onclick="saleGoTo(\''+hid+'\','+i+')"><img src="'+src+'" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>';}).join(''):'';
   }
+  /* Свайп пальцем по галерее */
+  if(!main.__swipe){
+    main.__swipe=true;
+    var sx=0,sy=0;
+    main.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+    main.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+      if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40)saleSlide(hid,dx<0?1:-1);
+    },{passive:true});
+  }
 }
 function saleSlide(hid,dir){
   var photos=window['__sale_'+hid]||[];
@@ -2201,7 +2303,14 @@ document.addEventListener('DOMContentLoaded',function(){
     <div class="notice-text" id="noticeText"></div>
     <div class="notice-prompt-wrap">
       <input type="tel" id="noticeInput" class="notice-input" placeholder="+7 (___) ___-__-__" onkeydown="if(event.key==='Enter')submitPhonePrompt()">
+      <div id="ts-phone" class="cf-turnstile" data-sitekey="0x4AAAAADurHMCLuGlUGUAo" data-theme="light" data-size="flexible" data-callback="__tsSet_phone" data-expired-callback="__tsExp_phone" style="margin-bottom:10px"></div>
       <button class="btn" style="width:100%" onclick="submitPhonePrompt()">Перезвоните мне</button>
+    </div>
+    <div class="sale-lead-wrap">
+      <input type="text" id="saleModalName" placeholder="Ваше имя" onkeydown="if(event.key==='Enter')document.getElementById('saleModalPhone').focus()">
+      <input type="tel" id="saleModalPhone" placeholder="+7 (___) ___-__-__" onkeydown="if(event.key==='Enter')submitSaleLead()">
+      <div id="ts-sale" class="cf-turnstile" data-sitekey="0x4AAAAADurHMCLuGlUGUAo" data-theme="light" data-size="flexible" data-callback="__tsSet_sale" data-expired-callback="__tsExp_sale" style="margin-bottom:10px"></div>
+      <button class="btn btn-green" style="width:100%" onclick="submitSaleLead()">Отправить заявку</button>
     </div>
     <button class="btn notice-ok-btn" onclick="closeNotice()">Понятно</button>
   </div>
