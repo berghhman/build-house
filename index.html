@@ -1619,12 +1619,11 @@ img[src^="Дома"].img-error{display:flex!important}
 })();
 
 /* ===== Настройки приёма заявок ===== */
-// Куда приходят заявки. Поменяйте на нужный адрес.
+// Запасной адрес: если сервер недоступен, заявка откроется в почтовом клиенте посетителя.
 const LEAD_EMAIL = "info@buildhousespb.ru";
-// Для АВТОМАТИЧЕСКОЙ отправки на почту (без открытия почтового клиента)
-// вставьте бесплатный ключ с https://web3forms.com (Access Key).
-// Пока поле пустое — заявка открывается в почтовом приложении посетителя.
-const WEB3FORMS_KEY = "a8ff350b-7e5f-4c8f-9173-2d7b94ccaaa7";
+// Заявки уходят в Bitrix24 CRM через собственный PHP-скрипт на хостинге reg.ru —
+// он хранит вебхук Bitrix24 на сервере и не раскрывает его в исходном коде страницы.
+const LEAD_ENDPOINT = "https://buildhousespb.ru/bitrix-lead.php";
 
 /* ─── Cloudflare Turnstile ─── */
 var __tsTokens={};
@@ -1687,33 +1686,29 @@ function deliverLead(lead){
     'Email: ' + (lead.email||'—') + '\n' +
     'Сообщение: ' + (lead.message||'—');
 
-  if(WEB3FORMS_KEY){
-    return fetch('https://api.web3forms.com/submit',{
-      method:'POST',
-      headers:{'Content-Type':'application/json',Accept:'application/json'},
-      body: JSON.stringify({
-        access_key: WEB3FORMS_KEY,
-        subject: subject,
-        from_name: 'Сайт BuildHouse',
-        name: lead.name, phone: lead.phone, email: lead.email, message: lead.message,
-        'cf-turnstile-response': lead.turnstileToken||''
-      })
-    }).then(r=>r.json()).then(function(json){
-      /* Web3Forms возвращает success:false при проблеме (неверный/неактивный ключ,
-         лимит, спам-фильтр и т.п.) — без этой проверки такие случаи ошибочно
-         считались успешной отправкой (цель в Метрике летела, письмо — нет). */
-      if(!json || json.success!==true){
-        throw new Error((json && json.message) || 'Web3Forms: отправка не подтверждена');
-      }
-      return json;
-    });
-  }
-  // Запасной вариант без ключа: открыть почтовый клиент посетителя
-  const mail = 'mailto:' + LEAD_EMAIL +
-    '?subject=' + encodeURIComponent(subject) +
-    '&body=' + encodeURIComponent(body);
-  window.location.href = mail;
-  return Promise.resolve({success:true, mailto:true});
+  return fetch(LEAD_ENDPOINT,{
+    method:'POST',
+    headers:{'Content-Type':'application/json',Accept:'application/json'},
+    body: JSON.stringify({
+      name: lead.name, phone: lead.phone, email: lead.email, message: lead.message,
+      turnstileToken: lead.turnstileToken||''
+    })
+  }).then(r=>r.json()).then(function(json){
+    /* Наш PHP-скрипт возвращает success:false, если Bitrix24 отклонил лид
+       (неверный вебхук, лимиты и т.п.) — без этой проверки такие случаи
+       ошибочно считались бы успешной отправкой. */
+    if(!json || json.success!==true){
+      throw new Error((json && json.error) || 'Bitrix24: отправка не подтверждена');
+    }
+    return json;
+  }).catch(function(){
+    // Сервер недоступен/ошибка сети — не теряем заявку: открываем почтовый клиент посетителя
+    const mail = 'mailto:' + LEAD_EMAIL +
+      '?subject=' + encodeURIComponent(subject) +
+      '&body=' + encodeURIComponent(body);
+    window.location.href = mail;
+    return {success:true, mailto:true};
+  });
 }
 
 /* Фирменный поп-ап вместо браузерных alert()/prompt() */
