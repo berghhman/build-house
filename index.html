@@ -436,6 +436,11 @@ img[src^="Дома"].img-error{display:flex!important}
 </head>
 <body>
 
+<!-- Honeypot: невидимое человеку поле-ловушка. Простые боты, автоматически
+     заполняющие все input на странице, попадаются на него; реальные
+     посетители его никогда не видят и не трогают. -->
+<input type="text" id="hp-website" name="website" value="" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+
 <div id="preloader" class="preloader">
   <div class="preloader-logo">BUILD<span>HOUSE</span></div>
   <div class="preloader-bar"><span></span></div>
@@ -1686,12 +1691,16 @@ function deliverLead(lead){
     'Email: ' + (lead.email||'—') + '\n' +
     'Сообщение: ' + (lead.message||'—');
 
+  const hpEl = document.getElementById('hp-website');
+  const hpValue = hpEl ? hpEl.value : '';
+
   return fetch(LEAD_ENDPOINT,{
     method:'POST',
     headers:{'Content-Type':'application/json',Accept:'application/json'},
     body: JSON.stringify({
       name: lead.name, phone: lead.phone, email: lead.email, message: lead.message,
-      turnstileToken: lead.turnstileToken||''
+      turnstileToken: lead.turnstileToken||'',
+      website: hpValue
     })
   }).then(r=>r.json()).then(function(json){
     /* Наш PHP-скрипт возвращает success:false, если Bitrix24 отклонил лид

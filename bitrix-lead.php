@@ -70,6 +70,18 @@ $phone     = clean_field($data['phone']   ?? '');
 $email     = clean_field($data['email']   ?? '');
 $message   = clean_field($data['message'] ?? '');
 $tsToken   = clean_field($data['turnstileToken'] ?? '');
+$honeypot  = clean_field($data['website'] ?? '');
+
+// ─────────────────────────────────────────────────────────────
+// Honeypot: это скрытое от людей поле, но простые боты, заполняющие
+// все input на странице, попадаются на нём. Если оно не пустое — это бот.
+// Отвечаем притворным success (чтобы не выдавать боту, что его вычислили),
+// но письмо не отправляем.
+// ─────────────────────────────────────────────────────────────
+if ($honeypot !== '') {
+    echo json_encode(['success' => true]);
+    exit;
+}
 
 if ($phone === '') {
     http_response_code(400);
