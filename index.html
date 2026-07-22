@@ -399,6 +399,25 @@ img[src^="Дома"].img-error{display:flex!important}
   .sale-sticky-btn{flex:1;padding:14px;background:#2e9e4f;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:.01em}
   .sale-sticky-btn:active{background:#268043}
 }
+/* Плавающая кнопка заявки (десктоп/планшет — на мобильном её роль выполняет sale-sticky-bar) */
+.sale-fab{display:none}
+@media(min-width:761px){
+  #page-sale1 .sale-fab{
+    display:flex;align-items:center;gap:9px;
+    position:fixed;bottom:28px;right:28px;z-index:600;
+    background:#2e9e4f;color:#fff;border:none;border-radius:50px;
+    padding:16px 26px;font-size:15px;font-weight:600;cursor:pointer;
+    box-shadow:0 10px 30px rgba(46,158,79,.35),0 2px 8px rgba(0,0,0,.12);
+    font-family:'Inter',sans-serif;letter-spacing:.01em;
+    transition:transform .2s,box-shadow .2s;
+    animation:saleFabPulse 2.6s ease-in-out infinite;
+  }
+  #page-sale1 .sale-fab:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(46,158,79,.42),0 2px 8px rgba(0,0,0,.14);animation-play-state:paused}
+}
+@keyframes saleFabPulse{
+  0%,100%{box-shadow:0 10px 30px rgba(46,158,79,.35),0 2px 8px rgba(0,0,0,.12)}
+  50%{box-shadow:0 10px 30px rgba(46,158,79,.6),0 2px 14px rgba(0,0,0,.16)}
+}
 </style>
 
 <!-- Yandex.Metrika counter -->
@@ -470,7 +489,7 @@ img[src^="Дома"].img-error{display:flex!important}
       <img src="photos/%D0%94%D0%BE%D0%BC%20132/1.png" alt="Дом 132 м²" style="object-position:center 65%">
       <div class="hero-content">
         <h2>Дом 132 м² · в продаже</h2>
-        <p>Лужский р-н, рядом р. Оредеж · СИП-панели · 15 млн. ₽</p>
+        <p>Лужский р-н, рядом р. Оредеж · СИП-панели · 14,7 млн. ₽</p>
         <a class="btn" onclick="showPage('sale1')">Смотреть дом →</a>
       </div>
     </div>
@@ -533,7 +552,7 @@ img[src^="Дома"].img-error{display:flex!important}
           </div>
           <div class="card-body">
             <div class="card-title">Дом 132 м² · Оредеж</div>
-            <div class="card-meta"><span class="tag" style="background:#fff3e8;color:#ff7a1a;font-weight:600">15 млн. ₽</span><span>Посмотреть →</span></div>
+            <div class="card-meta"><span class="tag" style="background:#fff3e8;color:#ff7a1a;font-weight:600">14,7 млн. ₽</span><span>Посмотреть →</span></div>
           </div>
         </div>
         <div class="card" style="cursor:pointer" onclick="showPage('dom63')"><img src="photos/%D0%94%D0%BE%D0%BC%2063/IMG_2081_thumb.JPG" alt="Дом 63" style="width:100%;height:210px;object-fit:cover;display:block"><div class="card-body"><div class="card-title">Дом 63 &middot; Дубравушка</div><div class="card-meta"><span class="tag">8 фото</span><span>Посмотреть →</span></div></div></div>
@@ -753,7 +772,7 @@ img[src^="Дома"].img-error{display:flex!important}
           <div class="house-card-body">
             <div class="house-card-title">Дом 132 м²</div>
             <div class="house-card-sub">Лужский р-н, рядом р. Оредеж &middot; СИП-панели, готов к заселению</div>
-            <div class="house-card-sale-price">15 млн. ₽</div>
+            <div class="house-card-sale-price"><s style="opacity:.5;font-weight:500;margin-right:6px">15 млн</s>14,7 млн. ₽</div>
           </div>
         </div>
       </div>
@@ -765,13 +784,14 @@ img[src^="Дома"].img-error{display:flex!important}
 <!-- SALE: Дом 132 м² (в продаже) -->
 <div class="page" id="page-sale1">
   <div class="sale-sticky-bar">
-    <span class="sale-sticky-price">15 млн. ₽</span>
+    <span class="sale-sticky-price">14,7 млн. ₽</span>
     <button class="sale-sticky-btn" onclick="openSaleLead('sale1','Дом 132 м² в Перечицах')">Оставить заявку</button>
   </div>
+  <button class="sale-fab" onclick="openSaleLead('sale1','Дом 132 м² в Перечицах')">🏠 Оставить заявку на дом</button>
   <div class="page-hero" style="position:relative">
     <button class="back-btn" onclick="showPage('built')">← Все дома</button>
     <h2>Дом 132 м² — готов к заселению</h2>
-    <p>📍 Лужский р-н, Ленобласть, рядом река Оредеж (точный адрес уточняется)</p>
+    <p>📍 Ленинградская обл., Лужский р-н, Толмачёвское гор. поселение, д. Перечицы, Парковая ул., 8</p>
   </div>
   <!-- Галерея + характеристики: двухколоночная сетка без лишних обёрток -->
   <div class="sale-page-body">
@@ -780,7 +800,7 @@ img[src^="Дома"].img-error{display:flex!important}
       <div class="sale-thumbs" id="sale-thumbs-sale1"></div>
     </div>
     <aside class="sale-specs">
-      <div class="sale-price">15 млн. ₽</div>
+      <div class="sale-price"><span style="font-size:15px;font-weight:500;text-decoration:line-through;color:#999;margin-right:10px;vertical-align:middle">15 млн. ₽</span><span style="vertical-align:middle">14,7 млн. ₽</span><span style="display:inline-block;background:#ffe8d6;color:#ff7a1a;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:20px;vertical-align:middle;margin-left:8px">Акция</span></div>
       <div class="advantage"><div class="advantage-icon">📐</div><div><div style="font-weight:500">Площадь</div><div class="sale-spec-label">132 м²</div></div></div>
       <div class="advantage"><div class="advantage-icon">🏠</div><div><div style="font-weight:500">Этажность</div><div class="sale-spec-label">Одноэтажный</div></div></div>
       <div class="advantage"><div class="advantage-icon">🛏</div><div><div style="font-weight:500">Спальни</div><div class="sale-spec-label">3 спальни + кухня-гостиная</div></div></div>
