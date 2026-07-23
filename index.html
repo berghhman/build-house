@@ -420,18 +420,9 @@ img[src^="Дома"].img-error{display:flex!important}
 }
 </style>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110100572', 'ym');
-    ym(110100572, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/110100572" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+<!-- Яндекс.Метрика теперь грузится только после согласия на аналитику —
+     см. cookie-баннер и loadYandexMetrika() перед </body>. Загрузка здесь,
+     в <head>, безусловно и до согласия посетителя, была нарушением 152-ФЗ. -->
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
@@ -646,7 +637,7 @@ img[src^="Дома"].img-error{display:flex!important}
         </div>
         <label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#888;margin-bottom:20px;cursor:pointer">
           <input type="checkbox" class="calc-consent" checked style="margin-top:2px;flex-shrink:0">
-          <span>Согласен с обработкой персональных данных в соответствии с политикой конфиденциальности</span>
+          <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a> в соответствии с политикой конфиденциальности</span>
         </label>
         <button class="btn" style="width:100%" onclick="sendCalcLead(this)">Отправить расчёт</button>
       </div>
@@ -838,6 +829,60 @@ img[src^="Дома"].img-error{display:flex!important}
   </section>
 </div>
 <script>window.__sale_sale1=["photos/Дом 132/1.png","photos/Дом 132/2.png","photos/Дом 132/3.png","photos/Дом 132/4.jpeg","photos/Дом 132/5.jpeg","photos/Дом 132/6.jpeg","photos/Дом 132/7.jpeg","photos/Дом 132/8.jpeg","photos/Дом 132/9.jpeg","photos/Дом 132/10.jpeg","photos/Дом 132/11.jpeg"];</script>
+
+<!-- ═══ Политика обработки ПДн + Согласие (152-ФЗ) ═══ -->
+<div class="page" id="page-privacy">
+  <div class="page-hero" style="position:relative">
+    <button class="back-btn" onclick="showPage('home')">← На главную</button>
+    <h2>Персональные данные</h2>
+    <p>Политика обработки персональных данных и согласие на их обработку</p>
+  </div>
+  <section class="section">
+    <div class="container" style="max-width:820px">
+
+      <div id="politika" style="margin-bottom:56px">
+        <h3 style="font-family:'Unbounded',sans-serif;font-size:22px;font-weight:600;margin-bottom:20px">Политика обработки персональных данных</h3>
+
+        <h4 style="font-size:16px;font-weight:600;color:#222;margin:22px 0 10px">1. Общие положения</h4>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Настоящая Политика обработки персональных данных (далее — «Политика») составлена в соответствии с требованиями Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые ООО «Билдхаус» (далее — «Оператор»).</p>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Оператор: Общество с ограниченной ответственностью «Билдхаус», ОГРН 1157847034223 (от 04.02.2015), ИНН 7813213625, КПП 470401001, адрес: 188824, Ленинградская область, Выборгский район, пр-д Главный (Полянская тер.), д. 78, ком. 1. Генеральный директор: Голубков Сергей Владимирович. Контакты для вопросов по персональным данным: <a href="mailto:buildhousespb@inbox.ru" style="color:#2e9e4f">buildhousespb@inbox.ru</a>, +7 (993) 970-94-09.</p>
+
+        <h4 style="font-size:16px;font-weight:600;color:#222;margin:22px 0 10px">2. Основные понятия</h4>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Персональные данные — любая информация, относящаяся прямо или косвенно к определённому или определяемому физическому лицу (субъекту персональных данных). Обработка персональных данных — любое действие с персональными данными, совершаемое с использованием средств автоматизации или без их использования.</p>
+
+        <h4 style="font-size:16px;font-weight:600;color:#222;margin:22px 0 10px">3. Состав обрабатываемых персональных данных</h4>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Фамилия, имя; номер телефона; адрес электронной почты; данные, указанные пользователем в свободной форме в комментариях к заявке; технические данные (cookie, IP-адрес, данные об устройстве) — при наличии на сайте аналитики/счётчиков.</p>
+
+        <h4 style="font-size:16px;font-weight:600;color:#222;margin:22px 0 10px">4. Цели обработки персональных данных</h4>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Обработка заявок на расчёт стоимости строительства дома; обратная связь с пользователем (обратный звонок, консультация); заключение и исполнение договора строительного подряда; улучшение качества сайта и сервиса (аналитика, при наличии согласия на cookie).</p>
+
+        <h4 style="font-size:16px;font-weight:600;color:#222;margin:22px 0 10px">5. Правовые основания обработки</h4>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Согласие субъекта персональных данных на обработку его персональных данных; договор, стороной которого является субъект персональных данных; иные основания, предусмотренные ст. 6 152-ФЗ.</p>
+
+        <h4 style="font-size:16px;font-weight:600;color:#222;margin:22px 0 10px">6. Порядок и условия обработки</h4>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Обработка персональных данных осуществляется с использованием средств автоматизации и без их использования; персональные данные хранятся на серверах, расположенных на территории Российской Федерации, в соответствии с требованиями Федерального закона № 242-ФЗ; срок хранения персональных данных — до достижения целей обработки либо до отзыва согласия субъектом персональных данных, если иное не предусмотрено законом; персональные данные не передаются третьим лицам, за исключением случаев, предусмотренных законодательством РФ, либо с отдельного согласия субъекта (например, банкам-партнёрам для оформления ипотеки по программе «ДомКлик»).</p>
+
+        <h4 style="font-size:16px;font-weight:600;color:#222;margin:22px 0 10px">7. Права субъекта персональных данных</h4>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Субъект персональных данных имеет право на получение информации, касающейся обработки его персональных данных, на уточнение, блокирование или уничтожение своих персональных данных, а также на отзыв согласия на обработку персональных данных, направив запрос на <a href="mailto:buildhousespb@inbox.ru" style="color:#2e9e4f">buildhousespb@inbox.ru</a>.</p>
+
+        <h4 style="font-size:16px;font-weight:600;color:#222;margin:22px 0 10px">8. Файлы cookie</h4>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Сайт использует файлы cookie для обеспечения работы форм и (при наличии согласия) для аналитики посещаемости (Яндекс.Метрика). Также используется сервис защиты от спама Cloudflare Turnstile, который проверяет, что заявку отправляет человек, а не бот.</p>
+
+        <h4 style="font-size:16px;font-weight:600;color:#222;margin:22px 0 10px">9. Заключительные положения</h4>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Оператор вправе вносить изменения в настоящую Политику. Новая редакция Политики вступает в силу с момента её размещения на сайте, если иное не предусмотрено новой редакцией Политики.</p>
+      </div>
+
+      <div id="soglasie">
+        <h3 style="font-family:'Unbounded',sans-serif;font-size:22px;font-weight:600;margin-bottom:20px">Согласие на обработку персональных данных</h3>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Я, оставляя заявку на сайте buildhousespb.ru, в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» свободно, своей волей и в своём интересе даю согласие ООО «Билдхаус» (ОГРН 1157847034223, ИНН 7813213625, адрес: 188824, Ленинградская область, Выборгский район, пр-д Главный (Полянская тер.), д. 78, ком. 1) на обработку моих персональных данных (фамилия, имя, номер телефона, адрес электронной почты) следующими способами: сбор, запись, систематизация, накопление, хранение, уточнение, извлечение, использование, передача (предоставление, доступ), обезличивание, блокирование, удаление, уничтожение — с использованием средств автоматизации и без их использования.</p>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Цель обработки: обработка заявки, расчёт стоимости, обратная связь по вопросам строительства дома, заключение и исполнение договора.</p>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Согласие действует до момента его отзыва путём направления письменного уведомления на адрес <a href="mailto:buildhousespb@inbox.ru" style="color:#2e9e4f">buildhousespb@inbox.ru</a>. Согласие может быть отозвано в любой момент.</p>
+        <p style="font-size:15px;line-height:1.85;color:#444;margin-bottom:14px">Я подтверждаю, что ознакомлен(а) с Политикой обработки персональных данных ООО «Билдхаус».</p>
+      </div>
+
+    </div>
+  </section>
+</div>
 
 <div class="page" id="page-dom3">
   <div class="page-hero" style="position:relative">
@@ -1454,7 +1499,7 @@ img[src^="Дома"].img-error{display:flex!important}
         </div>
         <label style="display:flex;gap:8px;align-items:flex-start;font-size:13px;color:#888;margin-bottom:20px;cursor:pointer">
           <input type="checkbox" class="calc-consent" checked style="margin-top:2px;flex-shrink:0">
-          <span>Согласен с обработкой персональных данных в соответствии с политикой конфиденциальности</span>
+          <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a> в соответствии с политикой конфиденциальности</span>
         </label>
         <button class="btn" style="width:100%" onclick="sendCalcLead(this)">Отправить расчёт</button>
       </div>
@@ -1541,7 +1586,7 @@ img[src^="Дома"].img-error{display:flex!important}
             <textarea id="c-msg" placeholder="Расскажите о вашем проекте — технология, площадь, этажность, пожелания..."></textarea>
             <div id="ts-contact" class="cf-turnstile" data-sitekey="0x4AAAAADurHMCLuGlUGUAo" data-theme="light" data-size="flexible" data-callback="__tsSet_contact" data-expired-callback="__tsExp_contact" style="margin-bottom:6px"></div>
             <button class="btn" style="width:100%" onclick="sendLead('contact')">Отправить заявку</button>
-            <p style="font-size:12px;color:#aaa;margin-top:10px">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+            <p style="font-size:12px;color:#aaa;margin-top:10px">Нажимая кнопку, вы соглашаетесь на <a href="/privacy#soglasie" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">обработку персональных данных</a></p>
           </div>
         </div>
       </div>
@@ -1611,7 +1656,7 @@ img[src^="Дома"].img-error{display:flex!important}
   </div>
   <div class="footer-bottom">
     <span>© 2024 ООО "BuildHouse" | Санкт-Петербург</span>
-    <span>Политика конфиденциальности</span>
+    <span><a href="/privacy" style="color:#999" onclick="showPage('privacy');return false">Политика конфиденциальности</a></span>
   </div>
 </footer>
 
@@ -1964,7 +2009,7 @@ function closeMenu(){
   document.getElementById('navBurger').classList.remove('open');
 }
 /* Карта внутренних имён страниц на чистые URL-адреса */
-const ROUTES={home:'/',built:'/projects',tech:'/technologies',price:'/prices',about:'/about',reviews:'/reviews',contact:'/contacts'};
+const ROUTES={home:'/',built:'/projects',tech:'/technologies',price:'/prices',about:'/about',reviews:'/reviews',contact:'/contacts',privacy:'/privacy'};
 const TITLES={
   home:'BuildHouse — Строительство домов под ключ в Санкт-Петербурге',
   built:'Проекты — BuildHouse',
@@ -1973,7 +2018,8 @@ const TITLES={
   about:'О нас — BuildHouse',
   reviews:'Отзывы — BuildHouse',
   contact:'Контакты — BuildHouse',
-  sale1:'Дом 132 м² в продаже — BuildHouse'
+  sale1:'Дом 132 м² в продаже — BuildHouse',
+  privacy:'Политика обработки персональных данных — BuildHouse'
 };
 function pathForPage(name){
   if(ROUTES[name])return ROUTES[name];
@@ -2026,7 +2072,11 @@ window.addEventListener('popstate',function(e){
 (function initRoute(){
   var name=pageForPath(location.pathname)||'home';
   showPage(name,true);
-  history.replaceState({page:name},'',pathForPage(name));
+  history.replaceState({page:name},'',pathForPage(name)+location.hash);
+  if(location.hash){
+    var anchorTarget=document.querySelector(location.hash);
+    if(anchorTarget){ setTimeout(function(){anchorTarget.scrollIntoView({behavior:'smooth',block:'start'});},60); }
+  }
 })();
 document.addEventListener('DOMContentLoaded',function(){
 let cur=0,timer;
@@ -2344,5 +2394,60 @@ document.addEventListener('DOMContentLoaded',function(){
     <button class="btn notice-ok-btn" onclick="closeNotice()">Понятно</button>
   </div>
 </div>
+
+<!-- ═══ Cookie-баннер (152-ФЗ): Метрика грузится только после согласия ═══ -->
+<style>
+  #cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#1a1a1a;color:#f2f2f2;padding:16px 20px;font-family:'Inter',sans-serif;font-size:14px;line-height:1.45;box-shadow:0 -2px 12px rgba(0,0,0,.25);display:none}
+  #cookie-banner.visible{display:block}
+  #cookie-banner .cb-wrap{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+  #cookie-banner .cb-text{flex:1 1 320px}
+  #cookie-banner .cb-text a{color:#8ecbff;text-decoration:underline}
+  #cookie-banner .cb-options{display:flex;align-items:center;gap:8px;font-size:13px;color:#ccc}
+  #cookie-banner .cb-buttons{display:flex;gap:8px;flex-wrap:wrap}
+  #cookie-banner button{cursor:pointer;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif}
+  #cookie-banner .cb-accept{background:#2e9e4f;color:#fff}
+  #cookie-banner .cb-accept:hover{background:#268043}
+  #cookie-banner .cb-decline{background:#3a3a3a;color:#eee}
+  #cookie-banner .cb-save{background:transparent;color:#8ecbff;border:1px solid #8ecbff}
+  @media(max-width:600px){#cookie-banner .cb-wrap{flex-direction:column;align-items:stretch}#cookie-banner .cb-buttons{justify-content:stretch}#cookie-banner .cb-buttons button{flex:1}}
+</style>
+<div id="cookie-banner">
+  <div class="cb-wrap">
+    <div class="cb-text">Мы используем файлы cookie, необходимые для работы сайта, а также — с вашего согласия — аналитические cookie (Яндекс.Метрика). Подробнее — в <a href="/privacy" target="_blank" rel="noopener">Политике обработки персональных данных</a>.</div>
+    <label class="cb-options"><input type="checkbox" id="cb-analytics-checkbox"> Аналитика (Яндекс.Метрика)</label>
+    <div class="cb-buttons">
+      <button class="cb-decline" id="cb-decline-btn">Отклонить необязательные</button>
+      <button class="cb-save" id="cb-save-btn">Сохранить настройки</button>
+      <button class="cb-accept" id="cb-accept-btn">Принять все</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var STORAGE_KEY="bh_cookie_consent_v1", YM_COUNTER_ID=110100572;
+  function getConsent(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))}catch(e){return null}}
+  function setConsent(a){localStorage.setItem(STORAGE_KEY,JSON.stringify({analytics:a,date:new Date().toISOString()}))}
+  function loadYandexMetrika(){
+    if(window.__ymLoaded)return; window.__ymLoaded=true;
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t);a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+    window.ym(YM_COUNTER_ID,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+    var ns=document.createElement("noscript");
+    ns.innerHTML='<div><img src="https://mc.yandex.ru/watch/'+YM_COUNTER_ID+'" style="position:absolute;left:-9999px;" alt="" /></div>';
+    document.body.appendChild(ns);
+  }
+  function showBanner(){document.getElementById("cookie-banner").classList.add("visible")}
+  function hideBanner(){document.getElementById("cookie-banner").classList.remove("visible")}
+  document.addEventListener("DOMContentLoaded",function(){
+    var c=getConsent();
+    if(c===null){showBanner()}else if(c.analytics){loadYandexMetrika()}
+    document.getElementById("cb-accept-btn").addEventListener("click",function(){setConsent(true);loadYandexMetrika();hideBanner()});
+    document.getElementById("cb-decline-btn").addEventListener("click",function(){setConsent(false);hideBanner()});
+    document.getElementById("cb-save-btn").addEventListener("click",function(){
+      var checked=document.getElementById("cb-analytics-checkbox").checked;
+      setConsent(checked); if(checked)loadYandexMetrika(); hideBanner();
+    });
+  });
+})();
+</script>
 </body>
 </html>
