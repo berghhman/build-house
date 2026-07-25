@@ -423,7 +423,6 @@ img[src^="Дома"].img-error{display:flex!important}
 <!-- Яндекс.Метрика теперь грузится только после согласия на аналитику —
      см. cookie-баннер и loadYandexMetrika() перед </body>. Загрузка здесь,
      в <head>, безусловно и до согласия посетителя, была нарушением 152-ФЗ. -->
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 
@@ -652,9 +651,6 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="hero-name" type="text" placeholder="Ваше имя" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;background:rgba(255,255,255,.1);color:#fff">
         <input id="hero-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;background:rgba(255,255,255,.1);color:#fff">
         <button class="btn" style="background:#fff;color:#1a1a1a;white-space:nowrap" onclick="sendLead('hero')">Рассчитать проект</button>
-      </div>
-      <div style="display:flex;justify-content:center;margin-top:12px">
-        <div id="ts-hero" class="cf-turnstile" data-sitekey="0x4AAAAADurHMCLuGlUGUAo" data-theme="dark" data-callback="__tsSet_hero" data-expired-callback="__tsExp_hero"></div>
       </div>
     </div>
   </section>
@@ -1584,7 +1580,6 @@ img[src^="Дома"].img-error{display:flex!important}
             <input id="c-phone" type="tel" placeholder="Телефон">
             <input id="c-email" type="email" placeholder="Email">
             <textarea id="c-msg" placeholder="Расскажите о вашем проекте — технология, площадь, этажность, пожелания..."></textarea>
-            <div id="ts-contact" class="cf-turnstile" data-sitekey="0x4AAAAADurHMCLuGlUGUAo" data-theme="light" data-size="flexible" data-callback="__tsSet_contact" data-expired-callback="__tsExp_contact" style="margin-bottom:6px"></div>
             <button class="btn" style="width:100%" onclick="sendLead('contact')">Отправить заявку</button>
             <p style="font-size:12px;color:#aaa;margin-top:10px">Нажимая кнопку, вы соглашаетесь на <a href="/privacy#soglasie" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">обработку персональных данных</a></p>
           </div>
@@ -1680,21 +1675,6 @@ const LEAD_EMAIL = "info@buildhousespb.ru";
 // он хранит вебхук Bitrix24 на сервере и не раскрывает его в исходном коде страницы.
 const LEAD_ENDPOINT = "https://buildhousespb.ru/bitrix-lead.php";
 
-/* ─── Cloudflare Turnstile ─── */
-var __tsTokens={};
-function __tsSet_sale(t){__tsTokens.sale=t;}
-function __tsExp_sale(){__tsTokens.sale=null;}
-function __tsSet_phone(t){__tsTokens.phone=t;}
-function __tsExp_phone(){__tsTokens.phone=null;}
-function __tsSet_hero(t){__tsTokens.hero=t;}
-function __tsExp_hero(){__tsTokens.hero=null;}
-function __tsSet_contact(t){__tsTokens.contact=t;}
-function __tsExp_contact(){__tsTokens.contact=null;}
-function __tsReset(id){
-  var el=document.getElementById(id);
-  if(el&&typeof turnstile!=='undefined'){try{turnstile.reset(el);}catch(e){}}
-}
-
 function collectLead(type){
   if(type==='hero'){
     return {
@@ -1749,7 +1729,6 @@ function deliverLead(lead){
     headers:{'Content-Type':'application/json',Accept:'application/json'},
     body: JSON.stringify({
       name: lead.name, phone: lead.phone, email: lead.email, message: lead.message,
-      turnstileToken: lead.turnstileToken||'',
       website: hpValue
     })
   }).then(r=>r.json()).then(function(json){
@@ -1812,9 +1791,8 @@ function submitSaleLead(){
   var phone=(document.getElementById('saleModalPhone').value||'').trim();
   if(!phone){var p=document.getElementById('saleModalPhone');p.style.borderColor='#e0463f';p.focus();return;}
   var hid=window.__saleModalHid||'sale1';
-  var tsToken=__tsTokens.sale||''; __tsTokens.sale=null; __tsReset('ts-sale');
   closeNotice();
-  var lead={name:name,phone:phone,email:'',message:'Заявка на дом в Перечицах 132 м² (в продаже) — просьба связаться',turnstileToken:tsToken};
+  var lead={name:name,phone:phone,email:'',message:'Заявка на дом в Перечицах 132 м² (в продаже) — просьба связаться'};
   deliverLead(lead).then(function(res){
     if(res&&!res.mailto&&typeof ym!=='undefined'){ym(110100572,'reachGoal','zayavka');}
     showNotice('success','Заявка отправлена!','Спасибо — мы свяжемся с вами в ближайшее время.');
@@ -1837,9 +1815,8 @@ function submitPhonePrompt(){
   var inp=document.getElementById('noticeInput');
   var phone=(inp.value||'').trim();
   if(!phone){ inp.style.borderColor='#e0463f'; inp.focus(); return; }
-  var tsToken=__tsTokens.phone||''; __tsTokens.phone=null; __tsReset('ts-phone');
   closeNotice();
-  window._cbLead = { name:'', phone:phone, email:'', message:'Заказ обратного звонка', turnstileToken:tsToken };
+  window._cbLead = { name:'', phone:phone, email:'', message:'Заказ обратного звонка' };
   deliverLead(window._cbLead).then(res=>{
     if(res && !res.mailto){ if(typeof ym!=='undefined'){ ym(110100572,'reachGoal','callback'); } }
     showNotice('success','Спасибо!','Мы перезвоним вам в ближайшее время.');
@@ -1855,8 +1832,6 @@ function setBtnLoading(btn, on){
 function sendLead(type){
   const lead = collectLead(type);
   if(!lead.phone){ showNotice('error','Укажите телефон','Чтобы мы могли связаться с вами, оставьте номер телефона.'); return; }
-  var tsKey=(type==='hero'?'hero':type==='contact'?'contact':null);
-  if(tsKey){ lead.turnstileToken=__tsTokens[tsKey]||''; __tsTokens[tsKey]=null; __tsReset('ts-'+tsKey); }
   const ae = document.activeElement;
   const btn = (ae && /^(BUTTON|A)$/.test(ae.tagName)) ? ae : null;
   setBtnLoading(btn, true);
@@ -2382,13 +2357,11 @@ document.addEventListener('DOMContentLoaded',function(){
     <div class="notice-text" id="noticeText"></div>
     <div class="notice-prompt-wrap">
       <input type="tel" id="noticeInput" class="notice-input" placeholder="+7 (___) ___-__-__" onkeydown="if(event.key==='Enter')submitPhonePrompt()">
-      <div id="ts-phone" class="cf-turnstile" data-sitekey="0x4AAAAADurHMCLuGlUGUAo" data-theme="light" data-size="flexible" data-callback="__tsSet_phone" data-expired-callback="__tsExp_phone" style="margin-bottom:10px"></div>
       <button class="btn" style="width:100%" onclick="submitPhonePrompt()">Перезвоните мне</button>
     </div>
     <div class="sale-lead-wrap">
       <input type="text" id="saleModalName" placeholder="Ваше имя" onkeydown="if(event.key==='Enter')document.getElementById('saleModalPhone').focus()">
       <input type="tel" id="saleModalPhone" placeholder="+7 (___) ___-__-__" onkeydown="if(event.key==='Enter')submitSaleLead()">
-      <div id="ts-sale" class="cf-turnstile" data-sitekey="0x4AAAAADurHMCLuGlUGUAo" data-theme="light" data-size="flexible" data-callback="__tsSet_sale" data-expired-callback="__tsExp_sale" style="margin-bottom:10px"></div>
       <button class="btn btn-green" style="width:100%" onclick="submitSaleLead()">Отправить заявку</button>
     </div>
     <button class="btn notice-ok-btn" onclick="closeNotice()">Понятно</button>
