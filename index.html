@@ -647,10 +647,16 @@ img[src^="Дома"].img-error{display:flex!important}
     <div class="container" style="text-align:center;color:#fff">
       <h2 style="font-family:'Unbounded',sans-serif;font-size:30px;font-weight:600;margin-bottom:14px">Готовы построить ваш дом?</h2>
       <p style="font-size:16px;opacity:.8;margin-bottom:36px">Бесплатный расчет за 24 часа - оставьте заявку прямо сейчас</p>
-      <div style="display:flex;gap:12px;max-width:600px;margin:0 auto;flex-wrap:wrap">
-        <input id="hero-name" type="text" placeholder="Ваше имя" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;background:rgba(255,255,255,.1);color:#fff">
-        <input id="hero-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;background:rgba(255,255,255,.1);color:#fff">
-        <button class="btn" style="background:#fff;color:#1a1a1a;white-space:nowrap" onclick="sendLead('hero')">Рассчитать проект</button>
+      <div style="max-width:600px;margin:0 auto">
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <input id="hero-name" type="text" placeholder="Ваше имя" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;background:rgba(255,255,255,.1);color:#fff">
+          <input id="hero-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid rgba(255,255,255,.2);border-radius:8px;font-size:14px;background:rgba(255,255,255,.1);color:#fff">
+          <button class="btn" style="background:#fff;color:#1a1a1a;white-space:nowrap" onclick="sendLead('hero')">Рассчитать проект</button>
+        </div>
+        <label style="display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:rgba(255,255,255,.55);margin-top:14px;cursor:pointer;text-align:left;max-width:420px">
+          <input type="checkbox" id="consent-hero" style="margin-top:2px;flex-shrink:0">
+          <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#6fc98a;text-decoration:underline">обработкой персональных данных</a></span>
+        </label>
       </div>
     </div>
   </section>
@@ -821,6 +827,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-sale1-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-sale1')">Оставить заявку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-sale1" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -920,6 +930,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom3-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom3')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom3" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -950,6 +964,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom4-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom4')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom4" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -978,6 +996,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom5-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom5')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom5" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1022,6 +1044,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom19-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom19')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom19" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1052,6 +1078,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom34-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom34')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom34" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1102,6 +1132,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom63-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom63')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom63" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1154,6 +1188,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom66-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom66')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom66" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1204,6 +1242,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom71-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom71')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom71" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1244,6 +1286,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom73-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom73')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom73" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1290,6 +1336,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom76-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom76')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom76" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1344,6 +1394,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom77-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom77')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom77" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1373,6 +1427,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom78-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom78')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom78" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1403,6 +1461,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom79-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom79')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom79" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1449,6 +1511,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom80-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom80')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom80" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1499,6 +1565,10 @@ img[src^="Дома"].img-error{display:flex!important}
         <input id="lead-dom81-phone" type="tel" placeholder="Телефон" style="flex:1;min-width:160px;padding:13px 18px;border:1px solid #e0e0e0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif">
         <button class="btn" style="white-space:nowrap" onclick="sendLead('house-dom81')">Получить планировку</button>
       </div>
+      <label style="display:inline-flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#888;cursor:pointer;text-align:left;max-width:420px;margin-top:14px">
+        <input type="checkbox" id="consent-house-dom81" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
     </div>
   </section>
 </div>
@@ -1723,8 +1793,11 @@ img[src^="Дома"].img-error{display:flex!important}
             <input id="c-phone" type="tel" placeholder="Телефон">
             <input id="c-email" type="email" placeholder="Email">
             <textarea id="c-msg" placeholder="Расскажите о вашем проекте - технология, площадь, этажность, пожелания..."></textarea>
+            <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#aaa;margin-bottom:12px;cursor:pointer;text-align:left">
+              <input type="checkbox" id="consent-contact" style="margin-top:2px;flex-shrink:0">
+              <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#888;text-decoration:underline">обработкой персональных данных</a></span>
+            </label>
             <button class="btn" style="width:100%" onclick="sendLead('contact')">Отправить заявку</button>
-            <p style="font-size:12px;color:#aaa;margin-top:10px">Нажимая кнопку, вы соглашаетесь на <a href="/privacy#soglasie" target="_blank" rel="noopener" style="color:#888;text-decoration:underline">обработку персональных данных</a></p>
           </div>
         </div>
       </div>
@@ -1927,9 +2000,15 @@ function openSaleLead(hid, label){
   var ni=document.getElementById('saleModalName'),pi=document.getElementById('saleModalPhone');
   if(ni){ni.value='';ni.style.borderColor='';}
   if(pi){pi.value='';pi.style.borderColor='';}
+  var smc=document.getElementById('consent-sale-modal'); if(smc) smc.checked=false;
   setTimeout(function(){if(ni)ni.focus();},380);
 }
 function submitSaleLead(){
+  var consentEl=document.getElementById('consent-sale-modal');
+  if(consentEl && !consentEl.checked){
+    showNotice('error','Нужно согласие','Пожалуйста, подтвердите согласие на обработку персональных данных.');
+    return;
+  }
   var name=(document.getElementById('saleModalName').value||'').trim();
   var phone=(document.getElementById('saleModalPhone').value||'').trim();
   if(!phone){var p=document.getElementById('saleModalPhone');p.style.borderColor='#e0463f';p.focus();return;}
@@ -1952,9 +2031,15 @@ function openPhonePrompt(){
   document.body.style.overflow='hidden';
   var inp=document.getElementById('noticeInput');
   inp.value=''; inp.style.borderColor='';
+  var cbc=document.getElementById('consent-callback'); if(cbc) cbc.checked=false;
   setTimeout(function(){inp.focus();},380);
 }
 function submitPhonePrompt(){
+  var consentEl=document.getElementById('consent-callback');
+  if(consentEl && !consentEl.checked){
+    showNotice('error','Нужно согласие','Пожалуйста, подтвердите согласие на обработку персональных данных.');
+    return;
+  }
   var inp=document.getElementById('noticeInput');
   var phone=(inp.value||'').trim();
   if(!phone){ inp.style.borderColor='#e0463f'; inp.focus(); return; }
@@ -1973,6 +2058,11 @@ function setBtnLoading(btn, on){
 }
 
 function sendLead(type){
+  const consentEl = document.getElementById('consent-'+type);
+  if(consentEl && !consentEl.checked){
+    showNotice('error','Нужно согласие','Пожалуйста, подтвердите согласие на обработку персональных данных.');
+    return;
+  }
   const lead = collectLead(type);
   if(!lead.phone){ showNotice('error','Укажите телефон','Чтобы мы могли связаться с вами, оставьте номер телефона.'); return; }
   const ae = document.activeElement;
@@ -2500,11 +2590,19 @@ document.addEventListener('DOMContentLoaded',function(){
     <div class="notice-text" id="noticeText"></div>
     <div class="notice-prompt-wrap">
       <input type="tel" id="noticeInput" class="notice-input" placeholder="+7 (___) ___-__-__" onkeydown="if(event.key==='Enter')submitPhonePrompt()">
+      <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#888;margin-bottom:12px;cursor:pointer;text-align:left">
+        <input type="checkbox" id="consent-callback" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
       <button class="btn" style="width:100%" onclick="submitPhonePrompt()">Перезвоните мне</button>
     </div>
     <div class="sale-lead-wrap">
       <input type="text" id="saleModalName" placeholder="Ваше имя" onkeydown="if(event.key==='Enter')document.getElementById('saleModalPhone').focus()">
       <input type="tel" id="saleModalPhone" placeholder="+7 (___) ___-__-__" onkeydown="if(event.key==='Enter')submitSaleLead()">
+      <label style="display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#888;margin-bottom:12px;cursor:pointer;text-align:left">
+        <input type="checkbox" id="consent-sale-modal" style="margin-top:2px;flex-shrink:0">
+        <span>Согласен с <a href="/privacy#soglasie" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#2e9e4f;text-decoration:underline">обработкой персональных данных</a></span>
+      </label>
       <button class="btn btn-green" style="width:100%" onclick="submitSaleLead()">Отправить заявку</button>
     </div>
     <button class="btn notice-ok-btn" onclick="closeNotice()">Понятно</button>
